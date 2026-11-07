@@ -1,0 +1,69 @@
+{
+  "artist": "bindingvow1106.testnet",
+  "image_file": "image.png",
+  "claimed_items": [
+    "passkey_attestation",
+    "layered_source_file",
+    "live_redraw"
+  ],
+  "challenge_code": "HM-2026-1107-POSTER",
+  "attestation": {
+    "account_id": "bindingvow1106.testnet",
+    "public_key": "ed25519:6mou6YELmTqqCLLmY7T2TdZhpcQdQPVfCZq6GQbjfb8M",
+    "message": "humanmark:attest:bindingvow1106.testnet:HM-2026-1107-POSTER",
+    "signature_b64": "zh37X6wFWg6ML+ytIc9jY8+PG20lPcOj8MdhjTiudZRhVlR7YtyiaEHxwSV9ekGekpzWSdP37JGIB1nnP6LVCA==",
+    "note": "Demo stand-in for a WebAuthn passkey assertion: an ed25519 signature by the artist account key over the case challenge code, verified by the examiners against the account keys onchain. The fingerprint itself is never uploaded, stored, or put onchain."
+  },
+  "files": [
+    {
+      "path": "image.png",
+      "sha256": "9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67",
+      "role": "image",
+      "created_at": "2026-11-04T13:07:00Z"
+    },
+    {
+      "path": "source/gen-poster.py",
+      "sha256": "52f5582c607c269e7d02e703e54ed79f65485f0064765f65d589af1c5ae973f9",
+      "item": "layered_source_file",
+      "created_at": "2026-11-04T13:03:15Z"
+    },
+    {
+      "path": "source/gen-poster2.py",
+      "sha256": "22b732b956373cd6f783c1fe35d7f90e9f9a13cc890dcb0b6e08457efec35d5e",
+      "item": "layered_source_file",
+      "created_at": "2026-11-04T13:06:58Z"
+    },
+    {
+      "path": "source/momo.json",
+      "sha256": "c378c386b32056347e074ba40b720cd96aae2a3431cf53b7bf2c008b5ce3578c",
+      "item": "layered_source_file",
+      "created_at": "2026-11-07T03:30:00Z",
+      "note": "Sprite grid recovered on 2026-11-07 from the v1 render after the original /tmp/momo.json was lost. Re-render similarity to the shipped poster measured at 0.979."
+    },
+    {
+      "path": "source/render.png",
+      "sha256": "14b84d944a5896657c9987a387e78aa694d769011e446a59c7f334abc28b7af8",
+      "item": "layered_source_file",
+      "role": "layered_export",
+      "created_at": "2026-11-07T03:35:00Z",
+      "note": "Fresh re-render of gen-poster2.py produced during bundle preparation."
+    },
+    {
+      "path": "attestation.json",
+      "sha256": "80058d8af187859a93f978ef329482875d18fc2f39c8179fe2f89d2645c0c343",
+      "item": "passkey_attestation"
+    },
+    {
+      "path": "redraw/HM-2026-1107-POSTER-detail.png",
+      "sha256": "677578d6d12320f987c6c65d795dacfd4e2a16330ee9a6d981bae04c7a084424",
+      "item": "live_redraw",
+      "region": [
+        0.28,
+        0.3,
+        0.48,
+        0.55
+      ],
+      "note": "Detail region re-rendered from source on challenge HM-2026-1107-POSTER."
+    }
+  ]
+}
