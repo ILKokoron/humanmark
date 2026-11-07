@@ -1,0 +1,72 @@
+{
+  "examiner": "exam2.bindingvow1106.testnet",
+  "role": "Scanner B",
+  "case_id": "case-3",
+  "tool": "umm-maybe/AI-image-detector (local pinned model at /home/hatch/workspace/human-cert/models/umm, transformers image-classification pipeline)",
+  "timestamp": "2026-11-07T04:52:06.956708+00:00",
+  "checks": [
+    {
+      "name": "bundle_hash_matches_chain",
+      "result": true,
+      "detail": "manifest sha256 1d3acb723e02a16a6475cbbfb5cd10ca2725969d27e57a294f8026e24ba7c397 vs onchain bundle_hash 1d3acb723e02a16a6475cbbfb5cd10ca2725969d27e57a294f8026e24ba7c397"
+    },
+    {
+      "name": "image_hash_matches_chain",
+      "result": true,
+      "detail": "image sha256 b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17 vs onchain image_hash b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17"
+    },
+    {
+      "name": "file_hash:image.webp",
+      "result": true,
+      "detail": "sha256 b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17 vs manifest b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17"
+    },
+    {
+      "name": "scanner_pixel_score",
+      "result": true,
+      "detail": "model umm-maybe/AI-image-detector P(AI) 0.4007 (advisory only)"
+    },
+    {
+      "name": "attestation_present",
+      "result": false,
+      "detail": "no attestation in manifest and no attestation.json in bundle"
+    },
+    {
+      "name": "verify:passkey_attestation",
+      "result": false,
+      "detail": "attestation verification failed, see attestation checks above"
+    },
+    {
+      "name": "verify:layered_source_file",
+      "result": false,
+      "detail": "no file with role layered_export in the bundle"
+    },
+    {
+      "name": "verify:continuous_timelapse",
+      "result": false,
+      "detail": "no video file entry for continuous_timelapse in the bundle"
+    }
+  ],
+  "threshold": {
+    "layered_source_file_sim_min": 0.85,
+    "progress_sketches_sim_min": 0.8,
+    "live_redraw_sim_min": 0.85,
+    "p_ai": "advisory only, does not gate item verification"
+  },
+  "verified_items": [],
+  "notes": [
+    "Calibration on a 20 image set: the three scanner models scored 0.50, 0.75 and 0.70 individually and 0.85 as an ensemble. Pixel scores are advisory, never the verdict.",
+    "This examiner (Scanner B, umm-maybe/AI-image-detector) reported P(AI) 0.4007 for this image. That score is advisory and did not gate any item verification.",
+    "Rule: pixels judge consistency of artifacts, process evidence judges origin."
+  ],
+  "raw_scores": [
+    {
+      "label": "human",
+      "score": 0.5993
+    },
+    {
+      "label": "artificial",
+      "score": 0.4007
+    }
+  ],
+  "p_ai": 0.4007
+}
