@@ -1,0 +1,154 @@
+{
+  "examiner": "exam4.bindingvow1106.testnet",
+  "role": "Provenance",
+  "case_id": "case-2",
+  "tool": "PIL metadata and EXIF inspection plus raw byte and PNG text chunk signature scan (no ML)",
+  "timestamp": "2026-11-07T04:50:16.444815+00:00",
+  "checks": [
+    {
+      "name": "bundle_hash_matches_chain",
+      "result": true,
+      "detail": "manifest sha256 121eccab9dcb16b968c6f3cbc20833cc8725c9195da59e82ee0c549a58fb2757 vs onchain bundle_hash 121eccab9dcb16b968c6f3cbc20833cc8725c9195da59e82ee0c549a58fb2757"
+    },
+    {
+      "name": "image_hash_matches_chain",
+      "result": true,
+      "detail": "image sha256 9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67 vs onchain image_hash 9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67"
+    },
+    {
+      "name": "file_hash:image.png",
+      "result": true,
+      "detail": "sha256 9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67 vs manifest 9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67"
+    },
+    {
+      "name": "file_hash:source/gen-poster.py",
+      "result": true,
+      "detail": "sha256 52f5582c607c269e7d02e703e54ed79f65485f0064765f65d589af1c5ae973f9 vs manifest 52f5582c607c269e7d02e703e54ed79f65485f0064765f65d589af1c5ae973f9"
+    },
+    {
+      "name": "file_hash:source/gen-poster2.py",
+      "result": true,
+      "detail": "sha256 22b732b956373cd6f783c1fe35d7f90e9f9a13cc890dcb0b6e08457efec35d5e vs manifest 22b732b956373cd6f783c1fe35d7f90e9f9a13cc890dcb0b6e08457efec35d5e"
+    },
+    {
+      "name": "file_hash:source/momo.json",
+      "result": true,
+      "detail": "sha256 c378c386b32056347e074ba40b720cd96aae2a3431cf53b7bf2c008b5ce3578c vs manifest c378c386b32056347e074ba40b720cd96aae2a3431cf53b7bf2c008b5ce3578c"
+    },
+    {
+      "name": "file_hash:source/render.png",
+      "result": true,
+      "detail": "sha256 14b84d944a5896657c9987a387e78aa694d769011e446a59c7f334abc28b7af8 vs manifest 14b84d944a5896657c9987a387e78aa694d769011e446a59c7f334abc28b7af8"
+    },
+    {
+      "name": "file_hash:attestation.json",
+      "result": true,
+      "detail": "sha256 80058d8af187859a93f978ef329482875d18fc2f39c8179fe2f89d2645c0c343 vs manifest 80058d8af187859a93f978ef329482875d18fc2f39c8179fe2f89d2645c0c343"
+    },
+    {
+      "name": "file_hash:redraw/HM-2026-1107-POSTER-detail.png",
+      "result": true,
+      "detail": "sha256 677578d6d12320f987c6c65d795dacfd4e2a16330ee9a6d981bae04c7a084424 vs manifest 677578d6d12320f987c6c65d795dacfd4e2a16330ee9a6d981bae04c7a084424"
+    },
+    {
+      "name": "final_image_metadata",
+      "result": true,
+      "detail": "format PNG, size (2048, 1024), mode RGB, info keys [], EXIF entries 0: {}"
+    },
+    {
+      "name": "ai_signature_scan:image.png",
+      "result": true,
+      "detail": "AI generator signature hits: none"
+    },
+    {
+      "name": "ai_signature_scan:source/gen-poster.py",
+      "result": true,
+      "detail": "AI generator signature hits: none"
+    },
+    {
+      "name": "ai_signature_scan:source/gen-poster2.py",
+      "result": true,
+      "detail": "AI generator signature hits: none"
+    },
+    {
+      "name": "ai_signature_scan:source/momo.json",
+      "result": true,
+      "detail": "AI generator signature hits: none"
+    },
+    {
+      "name": "ai_signature_scan:source/render.png",
+      "result": true,
+      "detail": "AI generator signature hits: none"
+    },
+    {
+      "name": "ai_signature_scan:attestation.json",
+      "result": true,
+      "detail": "AI generator signature hits: none"
+    },
+    {
+      "name": "ai_signature_scan:redraw/HM-2026-1107-POSTER-detail.png",
+      "result": true,
+      "detail": "AI generator signature hits: none"
+    },
+    {
+      "name": "export_consistency:source/render.png",
+      "result": true,
+      "detail": "export format and size compared to final image (PNG [2048, 1024])"
+    },
+    {
+      "name": "attestation_present",
+      "result": true,
+      "detail": "attestation for account bindingvow1106.testnet"
+    },
+    {
+      "name": "attestation_public_key_parse",
+      "result": true,
+      "detail": "public_key ed25519:6mou6YELmTqqCLLmY7T2TdZhpcQdQPVfCZq6GQbjfb8M decoded to 32 bytes"
+    },
+    {
+      "name": "attestation_account_matches_artist",
+      "result": true,
+      "detail": "attestation account_id bindingvow1106.testnet vs artist bindingvow1106.testnet"
+    },
+    {
+      "name": "attestation_signature_valid",
+      "result": true,
+      "detail": "ed25519 signature over attestation.message verified"
+    },
+    {
+      "name": "attestation_key_owned_onchain",
+      "result": true,
+      "detail": "artist access keys onchain: ['ed25519:6mou6YELmTqqCLLmY7T2TdZhpcQdQPVfCZq6GQbjfb8M']"
+    },
+    {
+      "name": "verify:passkey_attestation",
+      "result": true,
+      "detail": "attestation signature and onchain key ownership verified"
+    },
+    {
+      "name": "verify:layered_source_file",
+      "result": true,
+      "detail": "entries 4, artifact signature hits {}, export consistency True"
+    },
+    {
+      "name": "redraw_filename_challenge_code:redraw/HM-2026-1107-POSTER-detail.png",
+      "result": true,
+      "detail": "file name must contain challenge_code HM-2026-1107-POSTER"
+    },
+    {
+      "name": "verify:live_redraw",
+      "result": true,
+      "detail": "filename challenge code ok True, artifact signature hits {}"
+    }
+  ],
+  "threshold": "an item fails if any forensic check for that item fails",
+  "verified_items": [
+    "layered_source_file",
+    "live_redraw",
+    "passkey_attestation"
+  ],
+  "notes": [
+    "A signature hit in the final image is reported but the item verdict follows the artifact checks, since the case is decided by evidence.",
+    "No ML is used by this examiner."
+  ]
+}
