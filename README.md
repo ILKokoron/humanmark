@@ -8,7 +8,7 @@ Free detector websites guess from pixels. Humanmark certifies from evidence, wit
 
 ## Live
 
-- App: https://humanmark-ilkokorons-projects.vercel.app
+- App: frontend source in `frontend/` (planned URL https://humanmark-ilkokorons-projects.vercel.app; deployment status and the one blocker are recorded honestly in `docs/BUILD-RESULT.md`)
 - Contract: `humanmark.bindingvow1106.testnet` on NEAR testnet
 - Examiners: `exam1` to `exam5` under `bindingvow1106.testnet` (accounts listed onchain by the `examiners()` view)
 
