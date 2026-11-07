@@ -1,0 +1,19 @@
+{
+  "artist": "bindingvow1106.testnet",
+  "image_file": "image.webp",
+  "claimed_items": [
+    "passkey_attestation",
+    "continuous_timelapse",
+    "layered_source_file"
+  ],
+  "challenge_code": "HM-2026-1107-AI",
+  "files": [
+    {
+      "path": "image.webp",
+      "sha256": "b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17",
+      "role": "image",
+      "created_at": "2026-11-07T02:00:00Z",
+      "note": "Self-generated AI image (calibration set a07, fantasy floating islands). No evidence artifacts were provided with this submission."
+    }
+  ]
+}
