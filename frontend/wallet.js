@@ -1,16 +1,17 @@
 // Multi-wallet support via NEAR Wallet Selector (loaded as ES modules
 // from CDN, no bundler). The visitor picks their own wallet: MyNearWallet,
-// HERE, Sender, Meteor, Nightly, and more the selector offers. This page
+// HERE, Sender, Meteor, Nightly, HOT Wallet, and more the selector offers. This page
 // never holds a key; signing happens inside the chosen wallet.
 // Mirrors the Binding Vow frontend wallet.js, only the contract and the
 // exposed global (window.hmWallet) differ.
-import { setupWalletSelector } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/core@8.9.3/+esm';
-import { setupModal } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/modal-ui@8.9.3/+esm';
-import { setupMyNearWallet } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/my-near-wallet@8.9.3/+esm';
-import { setupHereWallet } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/here-wallet@8.9.3/+esm';
-import { setupSender } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/sender@8.9.3/+esm';
-import { setupMeteorWallet } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/meteor-wallet@8.9.3/+esm';
-import { setupNightly } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/nightly@8.9.3/+esm';
+import { setupWalletSelector } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/core@8.10.2/+esm';
+import { setupModal } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/modal-ui@8.10.2/+esm';
+import { setupMyNearWallet } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/my-near-wallet@8.10.2/+esm';
+import { setupHereWallet } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/here-wallet@8.10.2/+esm';
+import { setupSender } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/sender@8.10.2/+esm';
+import { setupMeteorWallet } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/meteor-wallet@8.10.2/+esm';
+import { setupNightly } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/nightly@8.10.2/+esm';
+import { setupHotWallet } from 'https://cdn.jsdelivr.net/npm/@near-wallet-selector/hot-wallet@8.10.2/+esm';
 
 const CONTRACT = 'humanmark.bindingvow1106.testnet';
 let selector = null;
@@ -41,6 +42,7 @@ async function ensureSelector() {
       setupSender(),
       setupMeteorWallet(),
       setupNightly(),
+      setupHotWallet(),
     ],
   });
   modal = setupModal(selector, { contractId: CONTRACT });
