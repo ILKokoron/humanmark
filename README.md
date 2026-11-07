@@ -8,7 +8,7 @@ Free detector websites guess from pixels. Humanmark certifies from evidence, wit
 
 ## Live
 
-- App: frontend source in `frontend/` (planned URL https://humanmark-ilkokorons-projects.vercel.app; deployment status and the one blocker are recorded honestly in `docs/BUILD-RESULT.md`)
+- App: https://humanmark-ilkokorons-projects.vercel.app (live, deployed 2026-11-07, read path click-verified in a real browser: Submit form, Cases loaded from chain, case detail and certificate view all render the chain values; the wallet-signed write path still needs a human wallet login to verify)
 - Contract: `humanmark.bindingvow1106.testnet` on NEAR testnet
 - Examiners: `exam1` to `exam5` under `bindingvow1106.testnet` (accounts listed onchain by the `examiners()` view)
 
