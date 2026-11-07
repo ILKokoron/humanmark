@@ -65,3 +65,88 @@ onchain, correctly).
 3. The poster generator scripts read the sprite grid from the absolute path /tmp/momo.json. The grid in the bundle (`demo/pass-bundle/source/momo.json`, recovered from the v1 render) must be copied to /tmp/momo.json before a Process auditor re-run; this is a wart inherited from the original design scripts and is documented in the manifest.
 4. The demo attestation is an account-key ed25519 signature standing in for a WebAuthn assertion (documented in the bundle and the README). Real WebAuthn enrolment exists in the frontend; binding an assertion into a case bundle is roadmap work.
 5. Reference swarm caveat, same as Binding Vow: one operator runs all five examiner programs and holds their keys in the local keychain. The methods genuinely differ and every report is public, but examiner independence here is methodological, not organizational.
+
+## Addendum (2026-11-07): Scanner B swap, clean-panel demo rerun, failure catalog
+
+Appended after the original record above, which is unchanged. Everything
+below was verified by reading chain state or files back.
+
+### Scanner B swap: DONE
+
+- `agents/examiner2_scanner_b.py` now loads `umm-maybe/AI-image-detector`
+  from the pinned local dir `models/umm` (license CC BY 4.0, attribution
+  in the file header and in the repo README's Credits and Licenses
+  section). The swap changes only the model: same Swin family, same
+  label names (artificial, human), same verification rules and
+  thresholds as the hung version. Header records the calibration note
+  (0.75 alone, zero false positives on human works, ensemble
+  {yaya, umm, king} 0.85).
+- `agents/README.md` updated with the new panel composition and the
+  candidate test summary.
+- Smoke test: `examiner2_scanner_b.py --case fixture --bundle fixtures
+  --dry-run` ran clean and wrote `agents/reports/fixture-scanner_b.json`
+  with tool `umm-maybe/AI-image-detector (local pinned model at
+  /home/hatch/workspace/human-cert/models/umm, ...)`, P(AI) 0.0505 on the
+  poster fixture, and verified items layered_source_file, live_redraw,
+  progress_sketches, the same items the previous Scanner B verified on
+  that fixture.
+
+### Demo rerun with the clean panel: DONE, both directions
+
+Same bundles as case-0 and case-1 (identical image and bundle hashes),
+submitted fresh so the old cases stay untouched. Both read back from
+chain after finalize.
+
+- case-2: PASS. Submit tx `3EAiSPEJ8LEhMEU173EAfredi41pcoC1BC2Kj5fND55E`,
+  finalize tx `5fuCn6hvuznxyzxL5abTVEEL5BwMdvmpogm6Um7r24y2`. Votes
+  (commit / reveal): exam1 `HDrV61zJqjJy7Snkdtbp7mGWHD29wM5fijP73RdStNHB`
+  / `5grrDviq5aMDCYjjrFwSgnJQ2ddYHmv44FZKAzTH6e9v`; exam2
+  `CF5xLvDuuqgng5mXW3HVwqRikTa3fHwJfPGZMLGWrt35` /
+  `EYyddyLfRQKCG5781b7iAoLNmdpMrw6VWMbwdvvYqub9`; exam3
+  `CjHaTptCXUK95GKEykQndAsvsuvC7fwGCi5bQ2hNayfC` /
+  `HwoAeQEC15Cm7wRuhwMpVsFd69RFzqh3pxg2oxP5BQW`; exam4
+  `AwhmuEyYJLBzwKBSPVKyT9oJAgRDHRUTAW2kiNDaAg36` /
+  `9QqzLCZxFEW7Fzzz353dsUhwaUhpgGZ1iyQBSEHmEbRG`; exam5
+  `8mHMg5Zj4eNxE3Mfa5U2nwavECj9osz4JbEkVPfECSKx` /
+  `FJ6vJAWYM3V3M1NGrwSgT7XkVJkNkCtThik4sJjfb1Cy`. Read-back verdict:
+  status passed, Human 5, Process 5, level 5, cert_token_id cert-2,
+  fee_settled true, 5 commits, 5 reveals. `nft_token(cert-2)` is owned
+  by `bindingvow1106.testnet`; total supply 2. Scanner pixel scores:
+  A 0.7617 AI, B (umm) 0.0505 AI, C 0.9435 AI. The Process auditor
+  again verified nothing, for the same published reasons as case-0.
+- case-3: FAIL. Submit tx `7gcKinuqgUwfhkbjigQk9xYYnUN2RisVNEp4cTh8y9D`,
+  finalize tx `4GCm3RrSXtemxM4p17xj4pABhbZahC4PMsxVsA8Eg9rR`. Votes
+  (commit / reveal): exam1 `8h3Wzebf63p19PVeUGyHGL1xfD2DyhbkvQQ9unPjTLqg` /
+  `CZD21rZWbGCCCZeYgdj3gWEAFfvoLLWhjcUS4Jbh6QQE`; exam2
+  `EUSnf8xnH7Y14fRtxfPkq3iV9CFuzyquwNmujr52198m` /
+  `9PkqHRp3Z5exeRH4y7d8j9G3FQtKwk3s4WMCxZAb3M5q`; exam3
+  `vTRVgJVkyJcmW9An5x5PFK8DvdvkroA3CzJRB5wqPQV` /
+  `wzRWwXegt8R3EdAsenBQrCf4uPwySRS2Hc4Q9znd2nr`; exam4
+  `FKukhZHbyxxkydd8RE2eP8yaqZnpej75JswpTRD9qt7G` /
+  `HzwYpt29MnYoPPSyE1zLcgMgu8vHH4hxb8G1puiT4s5S`; exam5
+  `FbwcwbnKpCPNJEviAmEH3bPhx8TyuseLPaN99tx2BQFy` /
+  `8RKNnxaDFfaEPpPB1GTu3kkehqdUZawsZWJXSjM5MiXL`. Read-back verdict:
+  status failed, Human 0, Process 0, level null, cert_token_id null,
+  fee_settled true, all 5 reveals with empty verified lists.
+  `nft_token(cert-3)` is null and total supply stayed 2. Fee split
+  proven by balances read before and after the case: each examiner
+  rose by about 0.0095 NEAR (exam1 +0.009549, exam2 +0.009543,
+  exam3 +0.009538, exam4 +0.009532, exam5 +0.009526). Scanner pixel
+  scores on the AI image: A 0.9272, B (umm) 0.4007, C 0.9902; umm's
+  miss matches its calibration behavior on this image (0.40) and is
+  recorded in the failure catalog. Pixels did not decide the case:
+  the bundle contained no evidence, so nothing could be verified.
+
+### Failure catalog: DONE
+
+`calibration/results/FAILURE-CATALOG.md` catalogues every measured
+error from both studies: per-model verdicts for all 20 images and all
+six models tested, every wrong image named per model, panels old and
+new, failure patterns grouped (code-drawn work defeats pixel panels,
+an accuses-everything scanner, expressive classics flagged, AI food
+and vaporwave passing as human, accusing candidates flagging the
+artist's own files), error direction per model, and the honest
+summary lines (no license-clean panel beats 0.85 on n=20; every panel
+above 0.85 includes the NC model; pixel-only judgment is structurally
+blind to process). The new demo reports are in `agents/reports/` and
+copied to `frontend/reports/` (20 report files there now).
