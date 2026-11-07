@@ -126,7 +126,7 @@ def scanner_analyze(model_id, local_dir, bundle_dir, manifest, case, integrity_o
     if not integrity_ok:
         return checks, verified, raw_scores, p_ai, thresholds
 
-    claimed = case.get("claimed_items") or manifest.get("claimed_items", [])
+    claimed = list(common.FULL_MENU)
 
     if "passkey_attestation" in claimed:
         ok, att_checks = attestation_cache()
@@ -263,7 +263,7 @@ def run_examiner(examiner, role, short, tool, analyze_fn):
         verified = []
     else:
         verified = [i for i in extra.get("verified_items", [])
-                    if i in (case.get("claimed_items") or manifest.get("claimed_items", []))]
+                    if i in common.FULL_MENU]
 
     notes = list(extra.get("notes", []))
     if not integrity_ok:
