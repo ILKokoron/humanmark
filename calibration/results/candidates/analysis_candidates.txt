@@ -1,0 +1,89 @@
+== label mappings (audit) ==
+yaya36095/ai-source-detector -> [('midjourney', 'ai', 0.3328), ('dalle', 'ai', 0.2199), ('other_ai', 'ai', 0.2158), ('real', 'human', 0.133), ('stable_diffusion', 'ai', 0.0985)]
+hungnh1201/ai-image-detector -> [('artificial', 'ai', 0.9999), ('human', 'human', 0.0001)]
+king1oo1/deepfake-model -> [('Real', 'human', 0.5424), ('Fake', 'ai', 0.4576)]
+Ateeqq/ai-vs-human-image-detector -> [('ai', 'ai', 1.0), ('hum', 'human', 0.0)]
+abacusai/Smaug-AI-Image-Detector -> [('ai', 'ai', 0.9935), ('human', 'human', 0.0065)]
+umm-maybe/AI-image-detector -> [('human', 'human', 0.9953), ('artificial', 'ai', 0.0047)]
+
+== per-model results (threshold 0.5) ==
+yaya36095/ai-source-detector: {'TP': 10, 'FP': 10, 'TN': 0, 'FN': 0, 'accuracy': 0.5}
+   wrong on: ['h01', 'h02', 'h03', 'h04', 'h05', 'h06', 'h07', 'h08', 'h09', 'h10']
+hungnh1201/ai-image-detector: {'TP': 7, 'FP': 2, 'TN': 8, 'FN': 3, 'accuracy': 0.75}
+   wrong on: ['a02', 'a08', 'a10', 'h04', 'h10']
+king1oo1/deepfake-model: {'TP': 5, 'FP': 1, 'TN': 9, 'FN': 5, 'accuracy': 0.7}
+   wrong on: ['a01', 'a02', 'a04', 'a05', 'a06', 'h10']
+Ateeqq/ai-vs-human-image-detector: {'TP': 9, 'FP': 6, 'TN': 4, 'FN': 1, 'accuracy': 0.65}
+   wrong on: ['a04', 'h02', 'h04', 'h06', 'h08', 'h09', 'h10']
+abacusai/Smaug-AI-Image-Detector: {'TP': 10, 'FP': 5, 'TN': 5, 'FN': 0, 'accuracy': 0.75}
+   wrong on: ['h02', 'h05', 'h08', 'h09', 'h10']
+umm-maybe/AI-image-detector: {'TP': 5, 'FP': 0, 'TN': 10, 'FN': 5, 'accuracy': 0.75}
+   wrong on: ['a01', 'a05', 'a07', 'a08', 'a10']
+
+== pairwise agreement rate (all pairs) ==
+yaya36095/ai-source-detector vs hungnh1201/ai-image-detector: 0.45
+yaya36095/ai-source-detector vs king1oo1/deepfake-model: 0.30
+yaya36095/ai-source-detector vs Ateeqq/ai-vs-human-image-detector: 0.75
+yaya36095/ai-source-detector vs abacusai/Smaug-AI-Image-Detector: 0.75
+yaya36095/ai-source-detector vs umm-maybe/AI-image-detector: 0.25
+hungnh1201/ai-image-detector vs king1oo1/deepfake-model: 0.65
+hungnh1201/ai-image-detector vs Ateeqq/ai-vs-human-image-detector: 0.60
+hungnh1201/ai-image-detector vs abacusai/Smaug-AI-Image-Detector: 0.60
+hungnh1201/ai-image-detector vs umm-maybe/AI-image-detector: 0.70
+king1oo1/deepfake-model vs Ateeqq/ai-vs-human-image-detector: 0.55
+king1oo1/deepfake-model vs abacusai/Smaug-AI-Image-Detector: 0.55
+king1oo1/deepfake-model vs umm-maybe/AI-image-detector: 0.65
+Ateeqq/ai-vs-human-image-detector vs abacusai/Smaug-AI-Image-Detector: 0.80
+Ateeqq/ai-vs-human-image-detector vs umm-maybe/AI-image-detector: 0.40
+abacusai/Smaug-AI-Image-Detector vs umm-maybe/AI-image-detector: 0.50
+
+== ensembles ==
+baseline {yaya,hung,king}
+  majority: {'TP': 9, 'FP': 2, 'TN': 8, 'FN': 1, 'accuracy': 0.85} wrong=['a02', 'h04', 'h10']
+  mean    : {'TP': 9, 'FP': 2, 'TN': 8, 'FN': 1, 'accuracy': 0.85} wrong=['a02', 'h04', 'h10']
+{yaya,Ateeqq,king}
+  majority: {'TP': 9, 'FP': 6, 'TN': 4, 'FN': 1, 'accuracy': 0.65} wrong=['a04', 'h02', 'h04', 'h06', 'h08', 'h09', 'h10']
+  mean    : {'TP': 9, 'FP': 6, 'TN': 4, 'FN': 1, 'accuracy': 0.65} wrong=['a04', 'h02', 'h04', 'h06', 'h08', 'h09', 'h10']
+{yaya,abacusai,king}
+  majority: {'TP': 10, 'FP': 5, 'TN': 5, 'FN': 0, 'accuracy': 0.75} wrong=['h02', 'h05', 'h08', 'h09', 'h10']
+  mean    : {'TP': 10, 'FP': 5, 'TN': 5, 'FN': 0, 'accuracy': 0.75} wrong=['h02', 'h05', 'h08', 'h09', 'h10']
+{yaya,umm-maybe,king}
+  majority: {'TP': 8, 'FP': 1, 'TN': 9, 'FN': 2, 'accuracy': 0.85} wrong=['a01', 'a05', 'h10']
+  mean    : {'TP': 8, 'FP': 1, 'TN': 9, 'FN': 2, 'accuracy': 0.85} wrong=['a01', 'a05', 'h10']
+4-model {yaya,hung,Ateeqq,king}
+  majority: {'TP': 8, 'FP': 2, 'TN': 8, 'FN': 2, 'accuracy': 0.8} wrong=['a02', 'a04', 'h04', 'h10']
+  mean    : {'TP': 9, 'FP': 4, 'TN': 6, 'FN': 1, 'accuracy': 0.75} wrong=['a04', 'h04', 'h06', 'h09', 'h10']
+4-model {yaya,hung,abacusai,king}
+  majority: {'TP': 9, 'FP': 1, 'TN': 9, 'FN': 1, 'accuracy': 0.9} wrong=['a02', 'h10']
+  mean    : {'TP': 10, 'FP': 2, 'TN': 8, 'FN': 0, 'accuracy': 0.9} wrong=['h09', 'h10']
+4-model {yaya,hung,umm-maybe,king}
+  majority: {'TP': 5, 'FP': 1, 'TN': 9, 'FN': 5, 'accuracy': 0.7} wrong=['a01', 'a02', 'a05', 'a08', 'a10', 'h10']
+  mean    : {'TP': 9, 'FP': 1, 'TN': 9, 'FN': 1, 'accuracy': 0.9} wrong=['a10', 'h10']
+4-model license-clean {yaya,Ateeqq,abacusai,king}
+  majority: {'TP': 9, 'FP': 4, 'TN': 6, 'FN': 1, 'accuracy': 0.75} wrong=['a04', 'h02', 'h08', 'h09', 'h10']
+  mean    : {'TP': 10, 'FP': 5, 'TN': 5, 'FN': 0, 'accuracy': 0.75} wrong=['h02', 'h06', 'h08', 'h09', 'h10']
+
+== per-image P(AI) detail ==
+id truth yaya3609 hungnh12 king1oo1   Ateeqq abacusai umm-mayb
+a01 ai        0.87     1.00     0.46     1.00     0.99     0.00
+a02 ai        0.80     0.00     0.24     1.00     1.00     0.99
+a03 ai        0.87     1.00     0.90     1.00     1.00     0.86
+a04 ai        0.86     0.77     0.23     0.00     1.00     0.87
+a05 ai        0.77     1.00     0.44     1.00     1.00     0.01
+a06 ai        0.89     0.97     0.34     1.00     1.00     0.53
+a07 ai        0.87     0.99     0.99     1.00     1.00     0.40
+a08 ai        0.86     0.43     0.92     1.00     1.00     0.05
+a09 ai        0.86     1.00     0.94     1.00     1.00     0.79
+a10 ai        0.87     0.00     0.72     0.99     1.00     0.10
+h01 human     0.84     0.00     0.06     0.00     0.01     0.27
+h02 human     0.80     0.00     0.02     1.00     1.00     0.04
+h03 human     0.87     0.00     0.08     0.00     0.00     0.01
+h04 human     0.85     1.00     0.03     1.00     0.01     0.01
+h05 human     0.84     0.00     0.01     0.00     0.90     0.48
+h06 human     0.76     0.02     0.32     0.99     0.00     0.02
+h07 human     0.87     0.00     0.20     0.00     0.00     0.17
+h08 human     0.75     0.04     0.16     1.00     1.00     0.37
+h09 human     0.77     0.05     0.42     1.00     1.00     0.01
+h10 human     0.86     0.88     0.94     1.00     0.91     0.05
+
+saved results/candidates/summary.json
