@@ -1,0 +1,7 @@
+{
+  "account_id": "bindingvow1106.testnet",
+  "public_key": "ed25519:6mou6YELmTqqCLLmY7T2TdZhpcQdQPVfCZq6GQbjfb8M",
+  "message": "humanmark:attest:bindingvow1106.testnet:HM-2026-1107-POSTER",
+  "signature_b64": "zh37X6wFWg6ML+ytIc9jY8+PG20lPcOj8MdhjTiudZRhVlR7YtyiaEHxwSV9ekGekpzWSdP37JGIB1nnP6LVCA==",
+  "note": "Demo stand-in for a WebAuthn passkey assertion: an ed25519 signature by the artist account key over the case challenge code, verified by the examiners against the account keys onchain. The fingerprint itself is never uploaded, stored, or put onchain."
+}
