@@ -32,7 +32,7 @@ An evidence item counts only if at least 3 of the 5 examiners verify it in their
 ## The five examiners (methods genuinely differ, reports are open)
 
 1. **Scanner A** (`exam1`): yaya36095/ai-source-detector, a 5-class source classifier (Stable Diffusion, Midjourney, DALL-E, real, other AI).
-2. **Scanner B** (`exam2`): hungnh1201/ai-image-detector, an SDXL-focused detector from a different model family and training set.
+2. **Scanner B** (`exam2`): umm-maybe/AI-image-detector, a Swin-based AI image detector. Scanner B originally ran hungnh1201/ai-image-detector; it was replaced on 2026-11-07 because hung is licensed CC BY-NC 3.0 (non-commercial). The replacement is the parent model family hung was fine-tuned from, with the same label names and the same verification method; only the model changed. See Credits and Licenses.
 3. **Scanner C** (`exam3`): king1oo1/deepfake-model, a SigLIP2 real-vs-fake model trained for photo fakery.
 4. **Provenance** (`exam4`): no machine learning. EXIF and metadata scan, PNG text chunk scan, C2PA string scan, hash and dimension consistency, known AI generator metadata signatures.
 5. **Process auditor** (`exam5`): the devil's advocate. Its job is to try to prove the work is AI or the bundle fabricated: hash chain audit, timestamp ordering, sketch progression measurement, re-running generator source, strict redraw similarity.
@@ -43,15 +43,38 @@ Scanners report their pixel scores openly, including when they dissent, but pixe
 
 Before any threshold was set, the three scanners were run over a 20 image set with certain ground truth (pre-1900 classics, human design files, categorized and self-generated AI images, including trap categories). Measured on that set: Scanner A scored 0.50 accuracy (it calls everything AI; its "real" class means real photograph, so human paintings fail it), Scanner B 0.75, Scanner C 0.70, and the ensemble 0.85, beating every single model. Pairwise agreement was only 0.30 to 0.65, which is why the ensemble works at all: the models are wrong in different places. Full record: `calibration/results/GATE-DECISION.md`. The honest conclusion built into the design: pixel-only judgment caps out around 0.85 and fails hardest on exactly the work digital artists submit, so the process evidence axis is the primary axis and the scanners are one signal among five. A full 100 image calibration set is required before any public accuracy claim; the 20 image spike only gated the build decision.
 
+**Candidate replacement test (2026-11-07, same 20 images).** Three license-clean candidates were measured as Scanner B replacements. umm-maybe/AI-image-detector (CC BY 4.0) scored 0.75 alone with zero false positives on the human works, and the new ensemble {Scanner A, umm, Scanner C} scored 0.85, identical to the original panel, with ensemble false positives down from 2 to 1. Ateeqq/ai-vs-human-image-detector scored 0.65, and abacusai/Smaug-AI-Image-Detector scored 0.75 alone but dropped its panel to 0.75 and flagged all three Squeek Arena design files, so both were rejected. The honest note, recorded rather than hidden: no license-clean panel beats 0.85 on this set; every panel measured above 0.85 (0.90 and 0.95) includes the non-commercial hung model. Full record: `calibration/results/candidates/RESULTS.md`. Every error from both studies, named image by image and grouped by failure pattern, is catalogued in `calibration/results/FAILURE-CATALOG.md`.
+
+## Credits and licenses
+
+The scanners are borrowed models, credited here as their licenses require. Humanmark's own contribution is the rule set, the escrow, the orchestration, and the calibration; the models belong to their authors.
+
+- **yaya36095/ai-source-detector** (Scanner A): Apache-2.0.
+- **umm-maybe/AI-image-detector** (Scanner B, current): CC BY 4.0, used with attribution to the umm-maybe authors.
+- **king1oo1/deepfake-model** (Scanner C): Apache-2.0.
+- **hungnh1201/ai-image-detector** (Scanner B, original panel only): CC BY-NC 3.0. It judged demo case-0 and case-1 during the initial build and was then replaced by umm-maybe, because a non-commercial model cannot sit in a panel that may be used commercially. Its scores remain in the calibration record as history.
+- **Ateeqq/ai-vs-human-image-detector** and **abacusai/Smaug-AI-Image-Detector**: Apache-2.0, tested as candidates, not used in the panel.
+- The calibration set is not redistributed in this repo; only its manifest, raw scores, analyses, and this failure literature are published.
+
 ## Demo cases (live on testnet, both directions)
 
-**case-0, PASS.** Kokoron's headline poster v2 for Squeek Arena, a code-drawn work that all three scanners call AI (pixel scores 0.84 to 0.94 AI in calibration, and AI-leaning again in their case reports, recorded, not hidden). Submitted with a real process bundle: the actual generator scripts (`gen-poster.py`, `gen-poster2.py`), the recovered sprite grid, a fresh re-render, a signed attestation, and a challenge detail redraw. Four examiners verified all three claimed items; the Process auditor verified none and published why: two bundle files are honestly dated after the final image (the sprite grid was recovered and the export re-rendered during bundle preparation), and its generator re-run measured 0.8705 against its 0.98 threshold. Every item still reached 4 of 5 votes. Verdict onchain: Human 5, Process 5, **certified at level 5 based on this evidence**, certificate `cert-0` minted to the artist.
+case-0 and case-1 were judged by the original panel (with hung as Scanner B). case-2 and case-3 are the same two demonstrations re-run on 2026-11-07 with the current license-clean panel (umm-maybe as Scanner B), so the live demo matches the code in this repo. All four verdicts were read back from chain state.
+
+**case-0, PASS (original panel).** Kokoron's headline poster v2 for Squeek Arena, a code-drawn work that all three scanners call AI (pixel scores 0.84 to 0.94 AI in calibration, and AI-leaning again in their case reports, recorded, not hidden). Submitted with a real process bundle: the actual generator scripts (`gen-poster.py`, `gen-poster2.py`), the recovered sprite grid, a fresh re-render, a signed attestation, and a challenge detail redraw. Four examiners verified all three claimed items; the Process auditor verified none and published why: two bundle files are honestly dated after the final image (the sprite grid was recovered and the export re-rendered during bundle preparation), and its generator re-run measured 0.8705 against its 0.98 threshold. Every item still reached 4 of 5 votes. Verdict onchain: Human 5, Process 5, **certified at level 5 based on this evidence**, certificate `cert-0` minted to the artist.
 - Submit tx: `4vt7JToCCfQTgNUewMAfJubxBS7E9qLjPLdZYHRDNyKQ`
 - Finalize tx: `4n3Ys47vfU7D92rsr95MiY1mQDpRCU4HVkdn3JujX4Qx`
 
-**case-1, FAIL.** A self-generated AI image (fantasy floating islands, from the calibration set) submitted claiming evidence it did not provide: no attestation, no timelapse, no source files. All five examiners examined it, reported, and verified nothing. Axes stayed at 0. No NFT was minted. The fee still split five ways to the examiners: pay is for examining, never for passing.
+**case-1, FAIL (original panel).** A self-generated AI image (fantasy floating islands, from the calibration set) submitted claiming evidence it did not provide: no attestation, no timelapse, no source files. All five examiners examined it, reported, and verified nothing. Axes stayed at 0. No NFT was minted. The fee still split five ways to the examiners: pay is for examining, never for passing.
 - Submit tx: `HFn1QSj5BwqpGw2FRZ79Zu4pNBPy14kZgowyYBjukaLY`
 - Finalize tx: `6ztPGioNcv3gqcU71MoGk4HKwR6xMsAKJn8sppUknxZG`
+
+**case-2, PASS (current panel).** The same headline poster v2 and the same process bundle as case-0, judged by the panel with umm-maybe as Scanner B. Scanner pixel scores this time: Scanner A 0.7617 AI, Scanner B (umm) 0.0505 AI (it did not accuse the poster, consistent with its zero false positives in calibration), Scanner C 0.9435 AI. Four examiners verified all three items; the Process auditor again verified none, for the same published reasons as case-0. Verdict onchain: Human 5, Process 5, **certified at level 5 based on this evidence**, certificate `cert-2` minted to the artist. Total supply after this case: 2.
+- Submit tx: `3EAiSPEJ8LEhMEU173EAfredi41pcoC1BC2Kj5fND55E`
+- Finalize tx: `5fuCn6hvuznxyzxL5abTVEEL5BwMdvmpogm6Um7r24y2`
+
+**case-3, FAIL (current panel).** The same AI image and empty-evidence claim as case-1. All five examiners verified nothing; axes 0 and 0; no NFT minted (total supply stayed 2). The fee still split five ways: each examiner's balance rose by about 0.0095 NEAR across the case (the 0.01 share minus their own commit and reveal gas), read back from chain before and after.
+- Submit tx: `7gcKinuqgUwfhkbjigQk9xYYnUN2RisVNEp4cTh8y9D`
+- Finalize tx: `4GCm3RrSXtemxM4p17xj4pABhbZahC4PMsxVsA8Eg9rR`
 
 ## Anti-gadungan rules
 
@@ -69,8 +92,8 @@ One contract holds escrow, voting, registry, and minting. `submit_case` locks a 
 - `contract/` - the Rust contract (near-sdk 5), 10 unit tests covering fee floor, unknown items, pass and fail flows, the 3-of-5 item rule, reveal integrity, and soulbound transfer.
 - `agents/` - the five examiners and the orchestrator in Python; each examiner file header publishes its method and rule.
 - `frontend/` - the static 4-screen app (submit with in-browser SHA-256 and evidence checklist, cases, case detail with examiner reports, certificate view) with NEAR Wallet Selector connect and a WebAuthn passkey enrolment panel.
-- `calibration/` - the 20 image calibration spike: set manifest, raw scores, analysis, and the gate decision.
-- `demo/` - the two demo evidence bundles and the orchestrator logs.
+- `calibration/` - the 20 image calibration spike (set manifest, raw scores, analysis, gate decision), the candidate replacement study under `calibration/results/candidates/`, and the failure catalog at `calibration/results/FAILURE-CATALOG.md`.
+- `demo/` - the demo evidence bundles and the orchestrator logs for all four cases.
 - `docs/` - the build result record with every transaction link.
 
 ## Run it yourself
