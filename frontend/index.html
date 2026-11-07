@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Humanmark - Certified human-made art</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@near-wallet-selector/modal-ui@8.9.3/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/near-api-js@4.0.4/dist/near-api-js.min.js"></script>
+</head>
+<body>
+<header>
+  <div class="brand">HUMANMARK</div>
+  <div class="tagline">A swarm of five examiners certifies human-made art. Pay is for examining, never for passing.</div>
+  <div class="walletbox">
+    <span id="walletState">Not connected</span>
+    <button id="btnWallet">Connect wallet</button>
+  </div>
+</header>
+
+<nav>
+  <button data-screen="submit" class="active">Submit</button>
+  <button data-screen="cases">Cases</button>
+  <button data-screen="detail">Case detail</button>
+  <button data-screen="cert">Certificate</button>
+</nav>
+
+<main>
+  <!-- SUBMIT -->
+  <section id="screen-submit" class="screen active">
+    <h2>Submit art for examination</h2>
+    <p class="hint">Pick the image. Its SHA-256 is computed here in your browser. Only the hash goes on chain, never the image itself.</p>
+    <div class="row">
+      <label class="grow">Image file <input id="imageFile" type="file" accept="image/*"></label>
+    </div>
+    <p class="msg">Image SHA-256: <code id="imageHashOut">pick a file</code></p>
+    <div class="row">
+      <label class="grow">Evidence bundle hash (SHA-256 of the bundle manifest)
+        <input id="bundleHashInput" type="text" placeholder="64 hex characters">
+      </label>
+    </div>
+    <p class="hint">Helper: the bundle manifest hash is computed by the bundle tool, not here. Build the bundle first, copy its manifest SHA-256, then paste it above. The bundle itself stays with you and the examiners, off chain.</p>
+
+    <h3>Claimed evidence</h3>
+    <p class="hint">Claim only items that are actually inside your bundle. An item counts only when at least 3 of 5 examiners verify it. Passing needs Human 5 or more AND Process 5 or more.</p>
+    <div class="evidence-grid">
+      <div class="panel">
+        <h3>Human axis</h3>
+        <div id="humanItems"></div>
+        <p class="msg">Human subtotal: <b id="humanSubtotal">0</b> points</p>
+      </div>
+      <div class="panel">
+        <h3>Process axis</h3>
+        <div id="processItems"></div>
+        <p class="msg">Process subtotal: <b id="processSubtotal">0</b> points</p>
+      </div>
+    </div>
+    <div class="panel" id="passPreview">
+      <b>Pass preview:</b> <span id="passPreviewText">select evidence items.</span>
+    </div>
+
+    <div class="row">
+      <label>Examination fee (NEAR) <input id="feeInput" type="number" min="0.05" step="0.01" value="0.05"></label>
+      <label>Judging window
+        <select id="judgeWinSelect">
+          <option value="600" selected>10 minutes (demo)</option>
+          <option value="1800">30 minutes</option>
+          <option value="3600">1 hour</option>
+          <option value="86400">24 hours</option>
+        </select>
+      </label>
+    </div>
+    <p class="hint" id="minFeeNote">Minimum fee: reading from chain...</p>
+    <p class="hint">The fee pays the examiners for examining. It is paid whether the case passes or fails. It never buys a pass.</p>
+    <button id="btnSubmitCase" class="primary">Submit case on chain</button>
+    <p id="submitMsg" class="msg"></p>
+
+    <div class="panel">
+      <h3>Passkey (Human axis, 5 points)</h3>
+      <p class="hint">Enrol a passkey on this device. The raw fingerprint or face scan never leaves your device, is never uploaded, and is never stored on chain. Your device only unlocks the passkey locally.</p>
+      <div id="passkeyArea">
+        <button id="btnPasskey" type="button">Enrol passkey (WebAuthn)</button>
+        <p class="msg">Credential ID: <code id="passkeyIdOut">not enrolled on this browser yet</code></p>
+      </div>
+      <p class="hint">Note: the passkey attestation file for a bundle is produced from this enrolment. Enrol here first, then let the bundle tool include the attestation file in the evidence bundle before you copy the bundle hash above.</p>
+    </div>
+
+    <div class="panel">
+      <h3>The five examiners</h3>
+      <ul class="judges">
+        <li><b>Scanner A:</b> yaya36095/ai-source-detector (ML image scan).</li>
+        <li><b>Scanner B:</b> hungnh1201/ai-image-detector (ML image scan, different model).</li>
+        <li><b>Scanner C:</b> king1oo1/deepfake-model (ML image scan, different model).</li>
+        <li><b>Provenance:</b> metadata and C2PA scan, no ML.</li>
+        <li><b>Process auditor:</b> devil's advocate. Checks the process evidence and argues the case against passing.</li>
+      </ul>
+      <p class="hint">Each examiner publishes an open report. On a pass, the certificate reads "certified at level N based on this evidence". Nothing here promises value.</p>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section id="screen-cases" class="screen">
+    <h2>Cases</h2>
+    <div class="row">
+      <button id="btnLoadCases" class="primary">Load from chain</button>
+    </div>
+    <div id="caseList"></div>
+  </section>
+
+  <!-- DETAIL -->
+  <section id="screen-detail" class="screen">
+    <h2>Case detail</h2>
+    <div class="row">
+      <label class="grow">Case ID <input id="detailCaseId" type="text" placeholder="case-0"></label>
+      <button id="btnLoadDetail" class="primary">Load case</button>
+    </div>
+    <div id="detailOut"></div>
+  </section>
+
+  <!-- CERTIFICATE -->
+  <section id="screen-cert" class="screen">
+    <h2>Certificate</h2>
+    <p class="hint">A certificate is a soulbound NFT. It cannot be transferred. It states a level based on the evidence examined, nothing more.</p>
+    <div class="row">
+      <label class="grow">Certificate token ID <input id="certTokenId" type="text" placeholder="cert-0"></label>
+      <button id="btnLoadCert" class="primary">Load certificate</button>
+    </div>
+    <div id="certOut"></div>
+  </section>
+</main>
+
+<footer>
+  <p>Contract: <code id="contractId"></code> on NEAR testnet. Examination fees pay for examining, never for passing.</p>
+</footer>
+
+<script src="app.js"></script>
+<script type="module" src="wallet.js"></script>
+</body>
+</html>
