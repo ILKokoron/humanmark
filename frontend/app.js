@@ -170,12 +170,29 @@ loadMinFee();
 
 // ---------- wallet (multi-wallet, see wallet.js) ----------
 document.getElementById('btnWallet').addEventListener('click', async () => {
+  const btn = document.getElementById('btnWallet');
+  const state = document.getElementById('walletState');
   if (!window.hmWallet) {
-    document.getElementById('walletState').textContent = 'Wallet module still loading, try again in a second.';
-    return;
+    // The selector modules load from a CDN in the background. Instead of a
+    // dead click, show a busy state and wait for them, up to 30 seconds.
+    const original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Loading wallets...';
+    state.textContent = 'Wallet modules are loading, one moment...';
+    const deadline = Date.now() + 30000;
+    while (!window.hmWallet && Date.now() < deadline) {
+      await new Promise((r) => setTimeout(r, 250));
+    }
+    btn.disabled = false;
+    btn.textContent = original;
+    if (!window.hmWallet) {
+      state.textContent = 'Wallet modules took too long to load. Check your connection and try again.';
+      return;
+    }
+    state.textContent = 'Not connected';
   }
   try { await window.hmWallet.open(); }
-  catch (e) { document.getElementById('walletState').textContent = e.message; }
+  catch (e) { state.textContent = e.message; }
 });
 async function callContract(method, args, depositYocto) {
   if (!window.hmWallet) throw new Error('Wallet module still loading.');
