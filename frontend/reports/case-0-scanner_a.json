@@ -1,0 +1,138 @@
+{
+  "examiner": "exam1.bindingvow1106.testnet",
+  "role": "Scanner A",
+  "case_id": "case-0",
+  "tool": "yaya36095/ai-source-detector (local pinned model at /home/hatch/workspace/human-cert/models/yaya, transformers image-classification pipeline)",
+  "timestamp": "2026-11-07T03:54:45.217055+00:00",
+  "checks": [
+    {
+      "name": "bundle_hash_matches_chain",
+      "result": true,
+      "detail": "manifest sha256 121eccab9dcb16b968c6f3cbc20833cc8725c9195da59e82ee0c549a58fb2757 vs onchain bundle_hash 121eccab9dcb16b968c6f3cbc20833cc8725c9195da59e82ee0c549a58fb2757"
+    },
+    {
+      "name": "image_hash_matches_chain",
+      "result": true,
+      "detail": "image sha256 9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67 vs onchain image_hash 9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67"
+    },
+    {
+      "name": "file_hash:image.png",
+      "result": true,
+      "detail": "sha256 9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67 vs manifest 9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67"
+    },
+    {
+      "name": "file_hash:source/gen-poster.py",
+      "result": true,
+      "detail": "sha256 52f5582c607c269e7d02e703e54ed79f65485f0064765f65d589af1c5ae973f9 vs manifest 52f5582c607c269e7d02e703e54ed79f65485f0064765f65d589af1c5ae973f9"
+    },
+    {
+      "name": "file_hash:source/gen-poster2.py",
+      "result": true,
+      "detail": "sha256 22b732b956373cd6f783c1fe35d7f90e9f9a13cc890dcb0b6e08457efec35d5e vs manifest 22b732b956373cd6f783c1fe35d7f90e9f9a13cc890dcb0b6e08457efec35d5e"
+    },
+    {
+      "name": "file_hash:source/momo.json",
+      "result": true,
+      "detail": "sha256 c378c386b32056347e074ba40b720cd96aae2a3431cf53b7bf2c008b5ce3578c vs manifest c378c386b32056347e074ba40b720cd96aae2a3431cf53b7bf2c008b5ce3578c"
+    },
+    {
+      "name": "file_hash:source/render.png",
+      "result": true,
+      "detail": "sha256 14b84d944a5896657c9987a387e78aa694d769011e446a59c7f334abc28b7af8 vs manifest 14b84d944a5896657c9987a387e78aa694d769011e446a59c7f334abc28b7af8"
+    },
+    {
+      "name": "file_hash:attestation.json",
+      "result": true,
+      "detail": "sha256 80058d8af187859a93f978ef329482875d18fc2f39c8179fe2f89d2645c0c343 vs manifest 80058d8af187859a93f978ef329482875d18fc2f39c8179fe2f89d2645c0c343"
+    },
+    {
+      "name": "file_hash:redraw/HM-2026-1107-POSTER-detail.png",
+      "result": true,
+      "detail": "sha256 677578d6d12320f987c6c65d795dacfd4e2a16330ee9a6d981bae04c7a084424 vs manifest 677578d6d12320f987c6c65d795dacfd4e2a16330ee9a6d981bae04c7a084424"
+    },
+    {
+      "name": "scanner_pixel_score",
+      "result": true,
+      "detail": "model yaya36095/ai-source-detector P(AI) 0.8529 (advisory only)"
+    },
+    {
+      "name": "attestation_present",
+      "result": true,
+      "detail": "attestation for account bindingvow1106.testnet"
+    },
+    {
+      "name": "attestation_public_key_parse",
+      "result": true,
+      "detail": "public_key ed25519:6mou6YELmTqqCLLmY7T2TdZhpcQdQPVfCZq6GQbjfb8M decoded to 32 bytes"
+    },
+    {
+      "name": "attestation_account_matches_artist",
+      "result": true,
+      "detail": "attestation account_id bindingvow1106.testnet vs artist bindingvow1106.testnet"
+    },
+    {
+      "name": "attestation_signature_valid",
+      "result": true,
+      "detail": "ed25519 signature over attestation.message verified"
+    },
+    {
+      "name": "attestation_key_owned_onchain",
+      "result": true,
+      "detail": "artist access keys onchain: ['ed25519:6mou6YELmTqqCLLmY7T2TdZhpcQdQPVfCZq6GQbjfb8M']"
+    },
+    {
+      "name": "verify:passkey_attestation",
+      "result": true,
+      "detail": "attestation signature and onchain key ownership verified"
+    },
+    {
+      "name": "layered_export_sim:source/render.png",
+      "result": true,
+      "detail": "perceptual sim to final image 0.9783, threshold 0.85"
+    },
+    {
+      "name": "verify:live_redraw:redraw/HM-2026-1107-POSTER-detail.png",
+      "result": true,
+      "detail": "sim of redraw to final image cropped to region [0.28, 0.3, 0.48, 0.55] is 0.9268, threshold 0.85"
+    }
+  ],
+  "threshold": {
+    "layered_source_file_sim_min": 0.85,
+    "progress_sketches_sim_min": 0.8,
+    "live_redraw_sim_min": 0.85,
+    "p_ai": "advisory only, does not gate item verification"
+  },
+  "verified_items": [
+    "layered_source_file",
+    "live_redraw",
+    "passkey_attestation"
+  ],
+  "notes": [
+    "Calibration on a 20 image set: the three scanner models scored 0.50, 0.75 and 0.70 individually and 0.85 as an ensemble. Pixel scores are advisory, never the verdict.",
+    "This examiner (Scanner A, yaya36095/ai-source-detector) reported P(AI) 0.8529 for this image. That score is advisory and did not gate any item verification.",
+    "Rule: pixels judge consistency of artifacts, process evidence judges origin."
+  ],
+  "raw_scores": [
+    {
+      "label": "midjourney",
+      "score": 0.3357
+    },
+    {
+      "label": "stable_diffusion",
+      "score": 0.239
+    },
+    {
+      "label": "dalle",
+      "score": 0.1579
+    },
+    {
+      "label": "real",
+      "score": 0.1472
+    },
+    {
+      "label": "other_ai",
+      "score": 0.1203
+    }
+  ],
+  "p_ai": 0.8529
+}
