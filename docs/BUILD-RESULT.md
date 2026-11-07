@@ -150,3 +150,9 @@ summary lines (no license-clean panel beats 0.85 on n=20; every panel
 above 0.85 includes the NC model; pixel-only judgment is structurally
 blind to process). The new demo reports are in `agents/reports/` and
 copied to `frontend/reports/` (20 report files there now).
+
+## Addendum 2026-11-07 12:16 WIB: frontend deployed and click-verified
+
+The Vercel blocker is resolved. Kokoron reconnected the Vercel connector; creating the project WITHOUT an explicit teamId then succeeded where the explicit-team call had returned 403 (the default scope carries the access). Project humanmark (prj_UyJ5NQloaqvufvsYKWjxrWYNx0UL), deployment dpl_94WXY4jnZYZNcCvMEchvhNMGbskU READY, SSO protection disabled, live at https://humanmark-ilkokorons-projects.vercel.app (HTTP 200). The deployed app.js is byte-identical to the local frontend source (md5 ceb944442ea266f1aab708e50f642940).
+
+Click verification, second pass with exact quotes (the first browser report contained invented details, examiner names alfa/beta.testnet and case list points that exist nowhere in the code or chain, and was discarded): case-0 detail shows PASSED, Human "5 points, 5 needed", Process "5 points, 5 needed", level 5, cert-0, examiners exam1 to exam5.bindingvow1106.testnet. Case-3 detail shows FAILED, 0 and 0 points, no certificate. Both match direct RPC read-backs of get_case. The wallet-signed write path remains unverified (needs a human wallet login), as with Binding Vow.
