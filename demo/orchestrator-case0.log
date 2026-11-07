@@ -1,0 +1,59 @@
+[orchestrator] running examiner1_scanner_a.py for case case-0
+{
+  "examiner": "exam1.bindingvow1106.testnet",
+  "role": "Scanner A",
+  "case_id": "case-0",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-0-scanner_a.json",
+  "report_hash": "211e0f3ad2718fa340226a03ae64ec4e6b2e8f4499c167507392d549bf54948a",
+  "verified_items": [
+    "layered_source_file",
+    "live_redraw",
+    "passkey_attestation"
+  ],
+  "dry_run": false,
+  "salt": "468e10136387a50f",
+  "commitment": "453a703f180d1ee5731a0dacf948a66e2e6b22d3937007fd17661e8ce292dd75",
+  "commit_tx": "5Hh8qgh95uRUPQPk5Ae8M7UUtrWhGc2MQwqmTT51nN6R",
+  "reveal_tx": "61qs3vBrfyeTNeX9wMdALw3DWwfGXyM65PJqjck9f5mA"
+}
+[orchestrator] examiner1_scanner_a.py done
+[orchestrator] running examiner2_scanner_b.py for case case-0
+[orchestrator] examiner2_scanner_b.py FAILED with exit code 1
+gs.dry_run)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hatch/workspace/human-cert/agents/examiner_base.py", line 69, in load_case
+    case = near.view("get_case", {"case_id": case_id_value(case_id)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hatch/workspace/human-cert/agents/near.py", line 40, in view
+    result = _rpc(
+             ^^^^^
+  File "/home/hatch/workspace/human-cert/agents/near.py", line 31, in _rpc
+    with urllib.request.urlopen(req, timeout=20) as res:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 1392, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 1348, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1457, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
