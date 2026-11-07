@@ -1,0 +1,162 @@
+[
+ {
+  "id": "a01",
+  "truth": "ai",
+  "kind": "AI-generated (Commons category)",
+  "file": "set/ai/a01.png",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Banniere_Association_EH_avec_Tampon.png",
+  "bytes": 405680
+ },
+ {
+  "id": "a02",
+  "truth": "ai",
+  "kind": "AI-generated (Commons category)",
+  "file": "set/ai/a02.jpg",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Vaporwave_sunset.jpg",
+  "bytes": 182926
+ },
+ {
+  "id": "a03",
+  "truth": "ai",
+  "kind": "AI-generated Midjourney (Theatre D'op\u00e9ra Spatial, Commons)",
+  "file": "set/ai/a03.png",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Th%C3%A9%C3%A2tre_D%E2%80%99op%C3%A9ra_Spatial.png",
+  "bytes": 854170
+ },
+ {
+  "id": "a04",
+  "truth": "ai",
+  "kind": "AI-generated (self-generated, opera digital painting)",
+  "file": "set/ai/a04.webp",
+  "source_page": "self-generated via media tool media-generation-cal-ai-opera-queen-0-9e4f8a85-01b4-41d2-a8fa-cc73fcaf82cc.webp",
+  "bytes": 567398
+ },
+ {
+  "id": "a05",
+  "truth": "ai",
+  "kind": "AI-generated (self-generated, anime illustration)",
+  "file": "set/ai/a05.webp",
+  "source_page": "self-generated via media tool media-generation-cal-ai-anime-girl-0-14af348a-6f3b-45b3-b536-3ab5ade1bf27.webp",
+  "bytes": 426098
+ },
+ {
+  "id": "a06",
+  "truth": "ai",
+  "kind": "AI-generated (self-generated, photorealistic portrait)",
+  "file": "set/ai/a06.webp",
+  "source_page": "self-generated via media tool media-generation-cal-ai-fisherman-0-235d2599-9c8c-4737-93c0-f3e820b8f1ee.webp",
+  "bytes": 493704
+ },
+ {
+  "id": "a07",
+  "truth": "ai",
+  "kind": "AI-generated (self-generated, fantasy digital painting)",
+  "file": "set/ai/a07.webp",
+  "source_page": "self-generated via media tool media-generation-cal-ai-floating-islands-0-1597d075-da60-4443-a251-c2d2e2cacd92.webp",
+  "bytes": 505692
+ },
+ {
+  "id": "a08",
+  "truth": "ai",
+  "kind": "AI-generated (self-generated, pixel art - trap category)",
+  "file": "set/ai/a08.webp",
+  "source_page": "self-generated via media tool media-generation-cal-ai-pixel-robot-cat-0-d903b45f-7b74-45a0-9086-a17cda7bd20c.webp",
+  "bytes": 460510
+ },
+ {
+  "id": "a09",
+  "truth": "ai",
+  "kind": "AI-generated (self-generated, 3D render style - trap category)",
+  "file": "set/ai/a09.webp",
+  "source_page": "self-generated via media tool media-generation-cal-ai-3d-car-0-c3edf3b2-dd07-4575-a734-0cfea16d8959.webp",
+  "bytes": 415630
+ },
+ {
+  "id": "a10",
+  "truth": "ai",
+  "kind": "AI-generated (self-generated, food photo style)",
+  "file": "set/ai/a10.webp",
+  "source_page": "self-generated via media tool media-generation-cal-ai-burger-photo-0-732b9e2b-740b-4497-b605-72e9b74d7768.webp",
+  "bytes": 536632
+ },
+ {
+  "id": "h01",
+  "truth": "human",
+  "kind": "classic artwork (pre-1900)",
+  "file": "set/human/h01.jpg",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+  "bytes": 343179
+ },
+ {
+  "id": "h02",
+  "truth": "human",
+  "kind": "classic artwork (pre-1900)",
+  "file": "set/human/h02.jpg",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Great_Wave_off_Kanagawa2.jpg",
+  "bytes": 244969
+ },
+ {
+  "id": "h03",
+  "truth": "human",
+  "kind": "classic artwork (pre-1900)",
+  "file": "set/human/h03.jpg",
+  "source_page": "https://commons.wikimedia.org/wiki/File:1665_Girl_with_a_Pearl_Earring.jpg",
+  "bytes": 321196
+ },
+ {
+  "id": "h04",
+  "truth": "human",
+  "kind": "classic artwork (pre-1900)",
+  "file": "set/human/h04.jpg",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Edvard_Munch,_1893,_The_Scream,_oil,_tempera_and_pastel_on_cardboard,_91_x_73_cm,_National_Gallery_of_Norway.jpg",
+  "bytes": 330166
+ },
+ {
+  "id": "h05",
+  "truth": "human",
+  "kind": "classic artwork (pre-1900)",
+  "file": "set/human/h05.jpg",
+  "source_page": "https://commons.wikimedia.org/wiki/File:The_Kiss_-_Gustav_Klimt_-_Google_Cultural_Institute.jpg",
+  "bytes": 405103
+ },
+ {
+  "id": "h06",
+  "truth": "human",
+  "kind": "classic artwork (pre-1900)",
+  "file": "set/human/h06.jpg",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Claude_Monet,_Impression,_soleil_levant.jpg",
+  "bytes": 253676
+ },
+ {
+  "id": "h07",
+  "truth": "human",
+  "kind": "classic artwork (pre-1900)",
+  "file": "set/human/h07.jpg",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg",
+  "bytes": 350038
+ },
+ {
+  "id": "h08",
+  "truth": "human",
+  "kind": "human design mock (code-drawn, Squeek Arena)",
+  "file": "set/human/h08.png",
+  "source_page": "local: squeek-arena/design/battle-preview-v1.png",
+  "bytes": 9872
+ },
+ {
+  "id": "h09",
+  "truth": "human",
+  "kind": "human-authored pixel art (Squeek Arena design sheet)",
+  "file": "set/human/h09.png",
+  "source_page": "local: squeek-arena/design",
+  "bytes": 12426
+ },
+ {
+  "id": "h10",
+  "truth": "human",
+  "kind": "human-designed poster (code-drawn, Squeek Arena)",
+  "file": "set/human/h10.png",
+  "source_page": "local: squeek-arena/design/headline-poster-v2.png",
+  "bytes": 95552
+ }
+]
