@@ -1,0 +1,126 @@
+[orchestrator] running examiner1_scanner_a.py for case case-3
+{
+  "examiner": "exam1.bindingvow1106.testnet",
+  "role": "Scanner A",
+  "case_id": "case-3",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-3-scanner_a.json",
+  "report_hash": "e0743ee36e43def0c516ea44e08b46827735f0e352253ee240b3ab1c07a8b4cb",
+  "verified_items": [],
+  "dry_run": false,
+  "salt": "de96dcf22da431c3",
+  "commitment": "2d14fd6c69f1c44548bac98c4f5e93b6728f0762b860c7e89e2ba001c17a994b",
+  "commit_tx": "8h3Wzebf63p19PVeUGyHGL1xfD2DyhbkvQQ9unPjTLqg",
+  "reveal_tx": "CZD21rZWbGCCCZeYgdj3gWEAFfvoLLWhjcUS4Jbh6QQE"
+}
+[orchestrator] examiner1_scanner_a.py done
+[orchestrator] running examiner2_scanner_b.py for case case-3
+{
+  "examiner": "exam2.bindingvow1106.testnet",
+  "role": "Scanner B",
+  "case_id": "case-3",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-3-scanner_b.json",
+  "report_hash": "8cd75666f28336d4590cc7f4f32f579611ed4525b93820b6c1ddcf3f1339e733",
+  "verified_items": [],
+  "dry_run": false,
+  "salt": "2bbbca4ccc02734c",
+  "commitment": "51f6b29bdbe11926a7d371a3dda57acec4238a57c5672a362e576d5557916499",
+  "commit_tx": "EUSnf8xnH7Y14fRtxfPkq3iV9CFuzyquwNmujr52198m",
+  "reveal_tx": "9PkqHRp3Z5exeRH4y7d8j9G3FQtKwk3s4WMCxZAb3M5q"
+}
+[orchestrator] examiner2_scanner_b.py done
+[orchestrator] running examiner3_scanner_c.py for case case-3
+{
+  "examiner": "exam3.bindingvow1106.testnet",
+  "role": "Scanner C",
+  "case_id": "case-3",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-3-scanner_c.json",
+  "report_hash": "5da093a97806529644632528332b4ce2d2e6a7e09e2168e67356ecf3c81c8593",
+  "verified_items": [],
+  "dry_run": false,
+  "salt": "f737511a54807ff3",
+  "commitment": "08a7cb21a4a18d74d6f53f4bf3775e8d03ed64534455c56369899fa5d1f7d1ec",
+  "commit_tx": "vTRVgJVkyJcmW9An5x5PFK8DvdvkroA3CzJRB5wqPQV",
+  "reveal_tx": "wzRWwXegt8R3EdAsenBQrCf4uPwySRS2Hc4Q9znd2nr"
+}
+[orchestrator] examiner3_scanner_c.py done
+[orchestrator] running examiner4_provenance.py for case case-3
+{
+  "examiner": "exam4.bindingvow1106.testnet",
+  "role": "Provenance",
+  "case_id": "case-3",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-3-provenance.json",
+  "report_hash": "30295553f97efc3014a0919e5f437956804c049e71f86ece768195f205b52fb7",
+  "verified_items": [],
+  "dry_run": false,
+  "salt": "50450de174293719",
+  "commitment": "876992eda4f21b7681598f322d5f885de3614f0f68e59a65fd6032fa7b6b9c95",
+  "commit_tx": "FKukhZHbyxxkydd8RE2eP8yaqZnpej75JswpTRD9qt7G",
+  "reveal_tx": "HzwYpt29MnYoPPSyE1zLcgMgu8vHH4hxb8G1puiT4s5S"
+}
+[orchestrator] examiner4_provenance.py done
+[orchestrator] running examiner5_process.py for case case-3
+{
+  "examiner": "exam5.bindingvow1106.testnet",
+  "role": "Process auditor",
+  "case_id": "case-3",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-3-process.json",
+  "report_hash": "127d5bef5a3dda513bdc7f8eb9cab3635cabe5a0063a549f0a6bfcb45fcbaa44",
+  "verified_items": [],
+  "dry_run": false,
+  "salt": "24d5c277ee16af40",
+  "commitment": "50c1f1009de733e8cb0ce8e8876d5897722e6d4b13e480c1ee89295ec7dd236b",
+  "commit_tx": "FbwcwbnKpCPNJEviAmEH3bPhx8TyuseLPaN99tx2BQFy",
+  "reveal_tx": "8RKNnxaDFfaEPpPB1GTu3kkehqdUZawsZWJXSjM5MiXL"
+}
+[orchestrator] examiner5_process.py done
+[orchestrator] calling finalize as bindingvow1106.testnet
+[orchestrator] finalize tx: 4GCm3RrSXtemxM4p17xj4pABhbZahC4PMsxVsA8Eg9rR
+[orchestrator] final case state:
+{
+  "case_id": "case-3",
+  "artist": "bindingvow1106.testnet",
+  "image_hash": "b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17",
+  "bundle_hash": "1d3acb723e02a16a6475cbbfb5cd10ca2725969d27e57a294f8026e24ba7c397",
+  "fee": "50000000000000000000000",
+  "claimed_items": [
+    "passkey_attestation",
+    "continuous_timelapse",
+    "layered_source_file"
+  ],
+  "status": "failed",
+  "commits_count": 5,
+  "reveals": [
+    {
+      "examiner": "exam1.bindingvow1106.testnet",
+      "verified_items": [],
+      "report_hash": "e0743ee36e43def0c516ea44e08b46827735f0e352253ee240b3ab1c07a8b4cb"
+    },
+    {
+      "examiner": "exam2.bindingvow1106.testnet",
+      "verified_items": [],
+      "report_hash": "8cd75666f28336d4590cc7f4f32f579611ed4525b93820b6c1ddcf3f1339e733"
+    },
+    {
+      "examiner": "exam3.bindingvow1106.testnet",
+      "verified_items": [],
+      "report_hash": "5da093a97806529644632528332b4ce2d2e6a7e09e2168e67356ecf3c81c8593"
+    },
+    {
+      "examiner": "exam4.bindingvow1106.testnet",
+      "verified_items": [],
+      "report_hash": "30295553f97efc3014a0919e5f437956804c049e71f86ece768195f205b52fb7"
+    },
+    {
+      "examiner": "exam5.bindingvow1106.testnet",
+      "verified_items": [],
+      "report_hash": "127d5bef5a3dda513bdc7f8eb9cab3635cabe5a0063a549f0a6bfcb45fcbaa44"
+    }
+  ],
+  "human_points": 0,
+  "process_points": 0,
+  "level": null,
+  "cert_token_id": null,
+  "fee_settled": true,
+  "created_ns": 1794027076526074673,
+  "judging_window_secs": 3600
+}
