@@ -49,22 +49,22 @@
     </div>
     <p class="hint">Helper: the bundle manifest hash is computed by the bundle tool, not here. Build the bundle first, copy its manifest SHA-256, then paste it above. The bundle itself stays with you and the examiners, off chain.</p>
 
-    <h3>Claimed evidence</h3>
-    <p class="hint">Claim only items that are actually inside your bundle. An item counts only when at least 3 of 5 examiners verify it. Passing needs Human 5 or more AND Process 5 or more.</p>
+    <h3>Evidence menu: what the examiners check</h3>
+    <p class="hint">You do not claim anything and there is nothing to tick. The examiners check the full menu below against your bundle, and an item counts only when at least 3 of 5 of them verify it. Passing needs Human 5 or more AND Process 5 or more, from verified items only.</p>
     <div class="evidence-grid">
       <div class="panel">
         <h3>Human axis</h3>
         <div id="humanItems"></div>
-        <p class="msg">Human subtotal: <b id="humanSubtotal">0</b> points</p>
+        <p class="msg">Human menu maximum: <b id="humanSubtotal">0</b> points</p>
       </div>
       <div class="panel">
         <h3>Process axis</h3>
         <div id="processItems"></div>
-        <p class="msg">Process subtotal: <b id="processSubtotal">0</b> points</p>
+        <p class="msg">Process menu maximum: <b id="processSubtotal">0</b> points</p>
       </div>
     </div>
     <div class="panel" id="passPreview">
-      <b>Pass preview:</b> <span id="passPreviewText">select evidence items.</span>
+      <b>How a pass is decided:</b> <span id="passPreviewText">by the examiners, after they open the bundle.</span>
     </div>
 
     <div class="row">
