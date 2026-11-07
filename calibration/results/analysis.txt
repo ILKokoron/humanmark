@@ -1,0 +1,45 @@
+== label mappings (audit) ==
+yaya36095/ai-source-detector -> [('midjourney', 'ai', 0.3328), ('dalle', 'ai', 0.2199), ('other_ai', 'ai', 0.2158), ('real', 'human', 0.133), ('stable_diffusion', 'ai', 0.0985)]
+hungnh1201/ai-image-detector -> [('artificial', 'ai', 0.9999), ('human', 'human', 0.0001)]
+king1oo1/deepfake-model -> [('Real', 'human', 0.5424), ('Fake', 'ai', 0.4576)]
+
+== per-model results (threshold 0.5) ==
+yaya36095/ai-source-detector: {'TP': 10, 'FP': 10, 'TN': 0, 'FN': 0, 'accuracy': 0.5}
+   wrong on: ['h01', 'h02', 'h03', 'h04', 'h05', 'h06', 'h07', 'h08', 'h09', 'h10']
+hungnh1201/ai-image-detector: {'TP': 7, 'FP': 2, 'TN': 8, 'FN': 3, 'accuracy': 0.75}
+   wrong on: ['a02', 'a08', 'a10', 'h04', 'h10']
+king1oo1/deepfake-model: {'TP': 5, 'FP': 1, 'TN': 9, 'FN': 5, 'accuracy': 0.7}
+   wrong on: ['a01', 'a02', 'a04', 'a05', 'a06', 'h10']
+
+== pairwise agreement rate ==
+yaya36095 vs hungnh1201: 0.45
+yaya36095 vs king1oo1: 0.30
+hungnh1201 vs king1oo1: 0.65
+
+== ensemble ==
+majority vote: {'TP': 9, 'FP': 2, 'TN': 8, 'FN': 1, 'accuracy': 0.85} wrong: ['a02', 'h04', 'h10']
+mean score   : {'TP': 9, 'FP': 2, 'TN': 8, 'FN': 1, 'accuracy': 0.85} wrong: ['a02', 'h04', 'h10']
+
+best single model accuracy: 0.75 | models: {'yaya36095/ai-source-detector': 0.5, 'hungnh1201/ai-image-detector': 0.75, 'king1oo1/deepfake-model': 0.7}
+
+== per-image detail ==
+a01 truth=ai    [0.87 1.00 0.46] kind=AI-generated (Commons category)
+a02 truth=ai    [0.80 0.00 0.24] kind=AI-generated (Commons category)
+a03 truth=ai    [0.87 1.00 0.90] kind=AI-generated Midjourney (Theatre D'opéra Spatial, Commons)
+a04 truth=ai    [0.86 0.77 0.23] kind=AI-generated (self-generated, opera digital painting)
+a05 truth=ai    [0.77 1.00 0.44] kind=AI-generated (self-generated, anime illustration)
+a06 truth=ai    [0.89 0.97 0.34] kind=AI-generated (self-generated, photorealistic portrait)
+a07 truth=ai    [0.87 0.99 0.99] kind=AI-generated (self-generated, fantasy digital painting)
+a08 truth=ai    [0.86 0.43 0.92] kind=AI-generated (self-generated, pixel art - trap category)
+a09 truth=ai    [0.86 1.00 0.94] kind=AI-generated (self-generated, 3D render style - trap categor
+a10 truth=ai    [0.87 0.00 0.72] kind=AI-generated (self-generated, food photo style)
+h01 truth=human [0.84 0.00 0.06] kind=classic artwork (pre-1900)
+h02 truth=human [0.80 0.00 0.02] kind=classic artwork (pre-1900)
+h03 truth=human [0.87 0.00 0.08] kind=classic artwork (pre-1900)
+h04 truth=human [0.85 1.00 0.03] kind=classic artwork (pre-1900)
+h05 truth=human [0.84 0.00 0.01] kind=classic artwork (pre-1900)
+h06 truth=human [0.76 0.02 0.32] kind=classic artwork (pre-1900)
+h07 truth=human [0.87 0.00 0.20] kind=classic artwork (pre-1900)
+h08 truth=human [0.75 0.04 0.16] kind=human design mock (code-drawn, Squeek Arena)
+h09 truth=human [0.77 0.05 0.42] kind=human-authored pixel art (Squeek Arena design sheet)
+h10 truth=human [0.86 0.88 0.94] kind=human-designed poster (code-drawn, Squeek Arena)
