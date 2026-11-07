@@ -1,0 +1,210 @@
+{
+ "Ateeqq/ai-vs-human-image-detector": {
+  "id2label": {
+   "0": "ai",
+   "1": "hum"
+  },
+  "scores": {
+   "a01": [
+    {
+     "label": "ai",
+     "score": 1.0
+    },
+    {
+     "label": "hum",
+     "score": 0.0
+    }
+   ],
+   "a02": [
+    {
+     "label": "ai",
+     "score": 1.0
+    },
+    {
+     "label": "hum",
+     "score": 0.0
+    }
+   ],
+   "a03": [
+    {
+     "label": "ai",
+     "score": 1.0
+    },
+    {
+     "label": "hum",
+     "score": 0.0
+    }
+   ],
+   "a04": [
+    {
+     "label": "hum",
+     "score": 0.9989
+    },
+    {
+     "label": "ai",
+     "score": 0.0011
+    }
+   ],
+   "a05": [
+    {
+     "label": "ai",
+     "score": 0.9998
+    },
+    {
+     "label": "hum",
+     "score": 0.0002
+    }
+   ],
+   "a06": [
+    {
+     "label": "ai",
+     "score": 0.9981
+    },
+    {
+     "label": "hum",
+     "score": 0.0019
+    }
+   ],
+   "a07": [
+    {
+     "label": "ai",
+     "score": 0.9996
+    },
+    {
+     "label": "hum",
+     "score": 0.0004
+    }
+   ],
+   "a08": [
+    {
+     "label": "ai",
+     "score": 1.0
+    },
+    {
+     "label": "hum",
+     "score": 0.0
+    }
+   ],
+   "a09": [
+    {
+     "label": "ai",
+     "score": 0.9999
+    },
+    {
+     "label": "hum",
+     "score": 0.0001
+    }
+   ],
+   "a10": [
+    {
+     "label": "ai",
+     "score": 0.9939
+    },
+    {
+     "label": "hum",
+     "score": 0.0061
+    }
+   ],
+   "h01": [
+    {
+     "label": "hum",
+     "score": 0.9959
+    },
+    {
+     "label": "ai",
+     "score": 0.0041
+    }
+   ],
+   "h02": [
+    {
+     "label": "ai",
+     "score": 0.9961
+    },
+    {
+     "label": "hum",
+     "score": 0.0039
+    }
+   ],
+   "h03": [
+    {
+     "label": "hum",
+     "score": 0.9999
+    },
+    {
+     "label": "ai",
+     "score": 0.0001
+    }
+   ],
+   "h04": [
+    {
+     "label": "ai",
+     "score": 0.9969
+    },
+    {
+     "label": "hum",
+     "score": 0.0031
+    }
+   ],
+   "h05": [
+    {
+     "label": "hum",
+     "score": 0.9997
+    },
+    {
+     "label": "ai",
+     "score": 0.0003
+    }
+   ],
+   "h06": [
+    {
+     "label": "ai",
+     "score": 0.9894
+    },
+    {
+     "label": "hum",
+     "score": 0.0106
+    }
+   ],
+   "h07": [
+    {
+     "label": "hum",
+     "score": 0.9998
+    },
+    {
+     "label": "ai",
+     "score": 0.0002
+    }
+   ],
+   "h08": [
+    {
+     "label": "ai",
+     "score": 0.9995
+    },
+    {
+     "label": "hum",
+     "score": 0.0005
+    }
+   ],
+   "h09": [
+    {
+     "label": "ai",
+     "score": 0.9997
+    },
+    {
+     "label": "hum",
+     "score": 0.0003
+    }
+   ],
+   "h10": [
+    {
+     "label": "ai",
+     "score": 1.0
+    },
+    {
+     "label": "hum",
+     "score": 0.0
+    }
+   ]
+  }
+ }
+}
