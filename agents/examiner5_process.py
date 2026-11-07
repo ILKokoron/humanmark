@@ -55,7 +55,7 @@ def analyze(bundle_dir, manifest, case, integrity_ok, integrity_checks, attestat
     ]
     image_rel = manifest.get("image_file", "image.png")
     image_path = common.bundle_file(bundle_dir, image_rel)
-    claimed = case.get("claimed_items") or manifest.get("claimed_items", [])
+    claimed = list(common.FULL_MENU)
     entries = manifest.get("files", []) or []
 
     # created_at ordering.
