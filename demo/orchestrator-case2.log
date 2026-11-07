@@ -1,0 +1,158 @@
+[orchestrator] running examiner1_scanner_a.py for case case-2
+{
+  "examiner": "exam1.bindingvow1106.testnet",
+  "role": "Scanner A",
+  "case_id": "case-2",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-2-scanner_a.json",
+  "report_hash": "346edbe3e7caadd2341b60028f926bfc279a01947e4e925b8cc30690589658d2",
+  "verified_items": [
+    "layered_source_file",
+    "live_redraw",
+    "passkey_attestation"
+  ],
+  "dry_run": false,
+  "salt": "dba3b97d982fc616",
+  "commitment": "dc8cc466a7e59d5a74148e08decd5f4a20e0d7bc060943395ac3763ac146e6c9",
+  "commit_tx": "HDrV61zJqjJy7Snkdtbp7mGWHD29wM5fijP73RdStNHB",
+  "reveal_tx": "5grrDviq5aMDCYjjrFwSgnJQ2ddYHmv44FZKAzTH6e9v"
+}
+[orchestrator] examiner1_scanner_a.py done
+[orchestrator] running examiner2_scanner_b.py for case case-2
+{
+  "examiner": "exam2.bindingvow1106.testnet",
+  "role": "Scanner B",
+  "case_id": "case-2",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-2-scanner_b.json",
+  "report_hash": "c4ebbb305fdf797f59053df2ffb81660d1b5707fe3c48161d73b7c54f9cc51ee",
+  "verified_items": [
+    "layered_source_file",
+    "live_redraw",
+    "passkey_attestation"
+  ],
+  "dry_run": false,
+  "salt": "404ae067068c7e66",
+  "commitment": "8a958dfaac66baf55e471eb4ed91afbd18b5e960d8bbf25b97b3a09a5da80e08",
+  "commit_tx": "CF5xLvDuuqgng5mXW3HVwqRikTa3fHwJfPGZMLGWrt35",
+  "reveal_tx": "EYyddyLfRQKCG5781b7iAoLNmdpMrw6VWMbwdvvYqub9"
+}
+[orchestrator] examiner2_scanner_b.py done
+[orchestrator] running examiner3_scanner_c.py for case case-2
+{
+  "examiner": "exam3.bindingvow1106.testnet",
+  "role": "Scanner C",
+  "case_id": "case-2",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-2-scanner_c.json",
+  "report_hash": "10e490c1e807fb1564a8372d9a0ce5f46779a133a60f1e949fc8b26a41de5021",
+  "verified_items": [
+    "layered_source_file",
+    "live_redraw",
+    "passkey_attestation"
+  ],
+  "dry_run": false,
+  "salt": "26abda60d322c001",
+  "commitment": "c9b6abec264ca8cef908f7841af6cd68543ac3835a058d07433ed919f2cdc8b6",
+  "commit_tx": "CjHaTptCXUK95GKEykQndAsvsuvC7fwGCi5bQ2hNayfC",
+  "reveal_tx": "HwoAeQEC15Cm7wRuhwMpVsFd69RFzqh3pxg2oxP5BQW"
+}
+[orchestrator] examiner3_scanner_c.py done
+[orchestrator] running examiner4_provenance.py for case case-2
+{
+  "examiner": "exam4.bindingvow1106.testnet",
+  "role": "Provenance",
+  "case_id": "case-2",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-2-provenance.json",
+  "report_hash": "634992f943d9263b634a0168dfd637ff9135d60924aaf23811c853fba17c3273",
+  "verified_items": [
+    "layered_source_file",
+    "live_redraw",
+    "passkey_attestation"
+  ],
+  "dry_run": false,
+  "salt": "c3e2432c8784f2a0",
+  "commitment": "e79930b7342cc2d4c0124be2a1f58428078f6d055a0d3d14453bd8fd564e0eea",
+  "commit_tx": "AwhmuEyYJLBzwKBSPVKyT9oJAgRDHRUTAW2kiNDaAg36",
+  "reveal_tx": "9QqzLCZxFEW7Fzzz353dsUhwaUhpgGZ1iyQBSEHmEbRG"
+}
+[orchestrator] examiner4_provenance.py done
+[orchestrator] running examiner5_process.py for case case-2
+{
+  "examiner": "exam5.bindingvow1106.testnet",
+  "role": "Process auditor",
+  "case_id": "case-2",
+  "report": "/home/hatch/workspace/human-cert/agents/reports/case-2-process.json",
+  "report_hash": "2f1738a75cbef6c5b7fa1e6fc131e36654170c5904ee3881cab0937cd98972fb",
+  "verified_items": [],
+  "dry_run": false,
+  "salt": "320b03c792346b5a",
+  "commitment": "81b47a8f441ddc8ca5c87a43594a7e4a0dfffc5fb0b91d3a97811e4262c47ff5",
+  "commit_tx": "8mHMg5Zj4eNxE3Mfa5U2nwavECj9osz4JbEkVPfECSKx",
+  "reveal_tx": "FJ6vJAWYM3V3M1NGrwSgT7XkVJkNkCtThik4sJjfb1Cy"
+}
+[orchestrator] examiner5_process.py done
+[orchestrator] calling finalize as bindingvow1106.testnet
+[orchestrator] finalize tx: 5fuCn6hvuznxyzxL5abTVEEL5BwMdvmpogm6Um7r24y2
+[orchestrator] final case state:
+{
+  "case_id": "case-2",
+  "artist": "bindingvow1106.testnet",
+  "image_hash": "9c89c5231115409407d111ff9ea8625388e423a805ebe91069c336fffaceae67",
+  "bundle_hash": "121eccab9dcb16b968c6f3cbc20833cc8725c9195da59e82ee0c549a58fb2757",
+  "fee": "50000000000000000000000",
+  "claimed_items": [
+    "passkey_attestation",
+    "layered_source_file",
+    "live_redraw"
+  ],
+  "status": "passed",
+  "commits_count": 5,
+  "reveals": [
+    {
+      "examiner": "exam1.bindingvow1106.testnet",
+      "verified_items": [
+        "layered_source_file",
+        "live_redraw",
+        "passkey_attestation"
+      ],
+      "report_hash": "346edbe3e7caadd2341b60028f926bfc279a01947e4e925b8cc30690589658d2"
+    },
+    {
+      "examiner": "exam2.bindingvow1106.testnet",
+      "verified_items": [
+        "layered_source_file",
+        "live_redraw",
+        "passkey_attestation"
+      ],
+      "report_hash": "c4ebbb305fdf797f59053df2ffb81660d1b5707fe3c48161d73b7c54f9cc51ee"
+    },
+    {
+      "examiner": "exam3.bindingvow1106.testnet",
+      "verified_items": [
+        "layered_source_file",
+        "live_redraw",
+        "passkey_attestation"
+      ],
+      "report_hash": "10e490c1e807fb1564a8372d9a0ce5f46779a133a60f1e949fc8b26a41de5021"
+    },
+    {
+      "examiner": "exam4.bindingvow1106.testnet",
+      "verified_items": [
+        "layered_source_file",
+        "live_redraw",
+        "passkey_attestation"
+      ],
+      "report_hash": "634992f943d9263b634a0168dfd637ff9135d60924aaf23811c853fba17c3273"
+    },
+    {
+      "examiner": "exam5.bindingvow1106.testnet",
+      "verified_items": [],
+      "report_hash": "2f1738a75cbef6c5b7fa1e6fc131e36654170c5904ee3881cab0937cd98972fb"
+    }
+  ],
+  "human_points": 5,
+  "process_points": 5,
+  "level": 5,
+  "cert_token_id": "cert-2",
+  "fee_settled": true,
+  "created_ns": 1794026927664776674,
+  "judging_window_secs": 3600
+}
