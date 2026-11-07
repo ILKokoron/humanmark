@@ -95,21 +95,25 @@ function levelFor(total) {
 }
 
 function buildChecklist() {
+  // The evidence menu is information, not a form. The artist claims nothing:
+  // the examiners check the full menu against the bundle and only their
+  // verified items count.
   const mk = (axis, mountId) => {
     const mount = document.getElementById(mountId);
     EVIDENCE.filter((e) => e.axis === axis).forEach((e) => {
-      const row = document.createElement('label');
+      const row = document.createElement('div');
       row.className = 'checkrow';
-      row.innerHTML = `<input type="checkbox" class="evidence-check" value="${esc(e.key)}"> <span>${esc(e.label)} <b>${e.points} pts</b></span>`;
+      row.innerHTML = `<span>${esc(e.label)} <b>${e.points} pts</b></span>`;
       mount.appendChild(row);
     });
   };
   mk('human', 'humanItems');
   mk('process', 'processItems');
-  document.querySelectorAll('.evidence-check').forEach((c) => c.addEventListener('change', updatePreview));
 }
 function selectedItems() {
-  return [...document.querySelectorAll('.evidence-check:checked')].map((c) => c.value);
+  // The full menu is submitted as the examination scope. Scoring comes only
+  // from items at least 3 of 5 examiners verify in the bundle.
+  return EVIDENCE.map((e) => e.key);
 }
 function axisTotals(items) {
   let human = 0; let process = 0;
@@ -125,15 +129,7 @@ function updatePreview() {
   document.getElementById('humanSubtotal').textContent = t.human;
   document.getElementById('processSubtotal').textContent = t.process;
   const el = document.getElementById('passPreviewText');
-  const base = `at 3 of 5 examiner votes this selection reaches Human ${t.human} / Process ${t.process}.`;
-  if (t.human >= 5 && t.process >= 5) {
-    el.innerHTML = `${esc(base)} <span class="ok">That clears both axes (5 needed on each). Preview level if every claimed item is verified: ${levelFor(t.total)}, as in "certified at level ${levelFor(t.total)} based on this evidence".</span>`;
-  } else {
-    const miss = [];
-    if (t.human < 5) miss.push(`Human needs ${5 - t.human} more`);
-    if (t.process < 5) miss.push(`Process needs ${5 - t.process} more`);
-    el.innerHTML = `${esc(base)} <span class="warn">Not a pass yet: ${esc(miss.join('; '))}.</span>`;
-  }
+  el.innerHTML = 'The examiners check the full menu above against your bundle. An item counts only when at least 3 of 5 examiners verify it is really in the bundle and really belongs to this image. A pass needs <b>Human 5 or more AND Process 5 or more from verified items only</b>. What you submit is two hashes, not a claim: the scoring checklist is filled in by the examiners, never by the artist.';
 }
 buildChecklist();
 updatePreview();
@@ -207,7 +203,7 @@ document.getElementById('btnSubmitCase').addEventListener('click', async () => {
     const claimed = selectedItems();
     if (!imageHash) throw new Error('Pick an image file first, so its SHA-256 is computed.');
     if (!/^[0-9a-f]{64}$/.test(bundleHash)) throw new Error('Bundle hash must be a 64 character hex SHA-256.');
-    if (!claimed.length) throw new Error('Claim at least one evidence item.');
+    if (!claimed.length) throw new Error('Evidence menu is empty.');
     const feeNear = document.getElementById('feeInput').value;
     const fee = nearApi.utils.format.parseNearAmount(feeNear);
     if (!fee) throw new Error('Fee is required.');
@@ -314,7 +310,7 @@ function caseCard(c) {
     `<div class="top"><b>${esc(c.case_id)}</b><span class="chip ${esc(c.status)}">${esc(c.status)}</span></div>` +
     `<dl>` +
     `<dt>Artist</dt><dd title="${esc(c.artist)}">${esc(shortenAccount(c.artist))}</dd>` +
-    `<dt>Claimed items</dt><dd>${claimedCount}</dd>` +
+    `<dt>Items in scope</dt><dd>${claimedCount}</dd>` +
     `<dt>Fee</dt><dd>${fmtNear(c.fee)} NEAR</dd>` +
     `<dt>Created</dt><dd>${esc(fmtTime(c.created_ns))}</dd>` +
     `</dl><p class="hint">Click to open case detail.</p>`;
@@ -387,11 +383,11 @@ async function loadDetail(id) {
       (c.level != null ? `<dt>Level</dt><dd>${esc(c.level)}</dd>` : '') +
       (c.cert_token_id ? `<dt>Certificate</dt><dd>${copySpan(c.cert_token_id)}</dd>` : '') +
       `</dl></div>`;
-    html += `<h3>Claimed items</h3>`;
+    html += `<h3>Items examined</h3>`;
     if (Array.isArray(c.claimed_items) && c.claimed_items.length) {
       html += '<ul class="items">' + c.claimed_items.map((k) => `<li>${esc(itemLabel(k))}</li>`).join('') + '</ul>';
     } else {
-      html += '<p class="hint">None claimed.</p>';
+      html += '<p class="hint">None.</p>';
     }
     html += `<h3>Axes</h3>${axisBar('Human', c.human_points)}${axisBar('Process', c.process_points)}`;
     html += `<p class="hint">An item counts only at 3 of 5 examiner votes. Points above are the totals from revealed votes recorded on chain.</p>`;
