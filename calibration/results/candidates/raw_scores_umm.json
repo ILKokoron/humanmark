@@ -1,0 +1,210 @@
+{
+ "umm-maybe/AI-image-detector": {
+  "id2label": {
+   "0": "artificial",
+   "1": "human"
+  },
+  "scores": {
+   "a01": [
+    {
+     "label": "human",
+     "score": 0.9953
+    },
+    {
+     "label": "artificial",
+     "score": 0.0047
+    }
+   ],
+   "a02": [
+    {
+     "label": "artificial",
+     "score": 0.9882
+    },
+    {
+     "label": "human",
+     "score": 0.0118
+    }
+   ],
+   "a03": [
+    {
+     "label": "artificial",
+     "score": 0.8631
+    },
+    {
+     "label": "human",
+     "score": 0.1369
+    }
+   ],
+   "a04": [
+    {
+     "label": "artificial",
+     "score": 0.8678
+    },
+    {
+     "label": "human",
+     "score": 0.1322
+    }
+   ],
+   "a05": [
+    {
+     "label": "human",
+     "score": 0.9867
+    },
+    {
+     "label": "artificial",
+     "score": 0.0133
+    }
+   ],
+   "a06": [
+    {
+     "label": "artificial",
+     "score": 0.5339
+    },
+    {
+     "label": "human",
+     "score": 0.4661
+    }
+   ],
+   "a07": [
+    {
+     "label": "human",
+     "score": 0.5969
+    },
+    {
+     "label": "artificial",
+     "score": 0.4031
+    }
+   ],
+   "a08": [
+    {
+     "label": "human",
+     "score": 0.954
+    },
+    {
+     "label": "artificial",
+     "score": 0.046
+    }
+   ],
+   "a09": [
+    {
+     "label": "artificial",
+     "score": 0.7873
+    },
+    {
+     "label": "human",
+     "score": 0.2127
+    }
+   ],
+   "a10": [
+    {
+     "label": "human",
+     "score": 0.9046
+    },
+    {
+     "label": "artificial",
+     "score": 0.0954
+    }
+   ],
+   "h01": [
+    {
+     "label": "human",
+     "score": 0.7284
+    },
+    {
+     "label": "artificial",
+     "score": 0.2716
+    }
+   ],
+   "h02": [
+    {
+     "label": "human",
+     "score": 0.9557
+    },
+    {
+     "label": "artificial",
+     "score": 0.0443
+    }
+   ],
+   "h03": [
+    {
+     "label": "human",
+     "score": 0.99
+    },
+    {
+     "label": "artificial",
+     "score": 0.01
+    }
+   ],
+   "h04": [
+    {
+     "label": "human",
+     "score": 0.9898
+    },
+    {
+     "label": "artificial",
+     "score": 0.0102
+    }
+   ],
+   "h05": [
+    {
+     "label": "human",
+     "score": 0.5214
+    },
+    {
+     "label": "artificial",
+     "score": 0.4786
+    }
+   ],
+   "h06": [
+    {
+     "label": "human",
+     "score": 0.9758
+    },
+    {
+     "label": "artificial",
+     "score": 0.0242
+    }
+   ],
+   "h07": [
+    {
+     "label": "human",
+     "score": 0.8291
+    },
+    {
+     "label": "artificial",
+     "score": 0.1709
+    }
+   ],
+   "h08": [
+    {
+     "label": "human",
+     "score": 0.6292
+    },
+    {
+     "label": "artificial",
+     "score": 0.3708
+    }
+   ],
+   "h09": [
+    {
+     "label": "human",
+     "score": 0.9855
+    },
+    {
+     "label": "artificial",
+     "score": 0.0145
+    }
+   ],
+   "h10": [
+    {
+     "label": "human",
+     "score": 0.9496
+    },
+    {
+     "label": "artificial",
+     "score": 0.0504
+    }
+   ]
+  }
+ }
+}
