@@ -1,0 +1,60 @@
+{
+  "examiner": "exam4.bindingvow1106.testnet",
+  "role": "Provenance",
+  "case_id": "case-3",
+  "tool": "PIL metadata and EXIF inspection plus raw byte and PNG text chunk signature scan (no ML)",
+  "timestamp": "2026-11-07T04:52:49.941997+00:00",
+  "checks": [
+    {
+      "name": "bundle_hash_matches_chain",
+      "result": true,
+      "detail": "manifest sha256 1d3acb723e02a16a6475cbbfb5cd10ca2725969d27e57a294f8026e24ba7c397 vs onchain bundle_hash 1d3acb723e02a16a6475cbbfb5cd10ca2725969d27e57a294f8026e24ba7c397"
+    },
+    {
+      "name": "image_hash_matches_chain",
+      "result": true,
+      "detail": "image sha256 b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17 vs onchain image_hash b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17"
+    },
+    {
+      "name": "file_hash:image.webp",
+      "result": true,
+      "detail": "sha256 b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17 vs manifest b9f7a50a8eb87012acb93e4449c70fc5474dbb7a0269d07e50ac55fada563a17"
+    },
+    {
+      "name": "final_image_metadata",
+      "result": true,
+      "detail": "format WEBP, size (1920, 1280), mode RGB, info keys ['background', 'loop', 'xmp'], EXIF entries 0: {}"
+    },
+    {
+      "name": "ai_signature_scan:image.webp",
+      "result": true,
+      "detail": "AI generator signature hits: none"
+    },
+    {
+      "name": "attestation_present",
+      "result": false,
+      "detail": "no attestation in manifest and no attestation.json in bundle"
+    },
+    {
+      "name": "verify:passkey_attestation",
+      "result": false,
+      "detail": "attestation verification failed, see attestation checks above"
+    },
+    {
+      "name": "verify:layered_source_file",
+      "result": false,
+      "detail": "entries 0, artifact signature hits {}, export consistency None"
+    },
+    {
+      "name": "verify:continuous_timelapse",
+      "result": false,
+      "detail": "video entries 0, artifact signature hits {}, metadata only"
+    }
+  ],
+  "threshold": "an item fails if any forensic check for that item fails",
+  "verified_items": [],
+  "notes": [
+    "A signature hit in the final image is reported but the item verdict follows the artifact checks, since the case is decided by evidence.",
+    "No ML is used by this examiner."
+  ]
+}
