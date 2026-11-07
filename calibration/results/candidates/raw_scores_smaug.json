@@ -1,0 +1,211 @@
+{
+ "abacusai/Smaug-AI-Image-Detector": {
+  "id2label": {
+   "0": "ai",
+   "1": "human"
+  },
+  "mapping_note": "No classifier labels; authors' script returns P(AI) directly. Stored as ai=P(AI), human=1-P(AI).",
+  "scores": {
+   "a01": [
+    {
+     "label": "ai",
+     "score": 0.9935
+    },
+    {
+     "label": "human",
+     "score": 0.0065
+    }
+   ],
+   "a02": [
+    {
+     "label": "ai",
+     "score": 0.9999
+    },
+    {
+     "label": "human",
+     "score": 0.0001
+    }
+   ],
+   "a03": [
+    {
+     "label": "ai",
+     "score": 0.9999
+    },
+    {
+     "label": "human",
+     "score": 0.0001
+    }
+   ],
+   "a04": [
+    {
+     "label": "ai",
+     "score": 0.9999
+    },
+    {
+     "label": "human",
+     "score": 0.0001
+    }
+   ],
+   "a05": [
+    {
+     "label": "ai",
+     "score": 0.9999
+    },
+    {
+     "label": "human",
+     "score": 0.0001
+    }
+   ],
+   "a06": [
+    {
+     "label": "ai",
+     "score": 0.9998
+    },
+    {
+     "label": "human",
+     "score": 0.0002
+    }
+   ],
+   "a07": [
+    {
+     "label": "ai",
+     "score": 1.0
+    },
+    {
+     "label": "human",
+     "score": 0.0
+    }
+   ],
+   "a08": [
+    {
+     "label": "ai",
+     "score": 1.0
+    },
+    {
+     "label": "human",
+     "score": 0.0
+    }
+   ],
+   "a09": [
+    {
+     "label": "ai",
+     "score": 0.9976
+    },
+    {
+     "label": "human",
+     "score": 0.0024
+    }
+   ],
+   "a10": [
+    {
+     "label": "ai",
+     "score": 0.9996
+    },
+    {
+     "label": "human",
+     "score": 0.0004
+    }
+   ],
+   "h01": [
+    {
+     "label": "ai",
+     "score": 0.0115
+    },
+    {
+     "label": "human",
+     "score": 0.9885
+    }
+   ],
+   "h02": [
+    {
+     "label": "ai",
+     "score": 0.9987
+    },
+    {
+     "label": "human",
+     "score": 0.0013
+    }
+   ],
+   "h03": [
+    {
+     "label": "ai",
+     "score": 0.0007
+    },
+    {
+     "label": "human",
+     "score": 0.9993
+    }
+   ],
+   "h04": [
+    {
+     "label": "ai",
+     "score": 0.0071
+    },
+    {
+     "label": "human",
+     "score": 0.9929
+    }
+   ],
+   "h05": [
+    {
+     "label": "ai",
+     "score": 0.9015
+    },
+    {
+     "label": "human",
+     "score": 0.0985
+    }
+   ],
+   "h06": [
+    {
+     "label": "ai",
+     "score": 0.0012
+    },
+    {
+     "label": "human",
+     "score": 0.9988
+    }
+   ],
+   "h07": [
+    {
+     "label": "ai",
+     "score": 0.0007
+    },
+    {
+     "label": "human",
+     "score": 0.9993
+    }
+   ],
+   "h08": [
+    {
+     "label": "ai",
+     "score": 0.9972
+    },
+    {
+     "label": "human",
+     "score": 0.0028
+    }
+   ],
+   "h09": [
+    {
+     "label": "ai",
+     "score": 0.9987
+    },
+    {
+     "label": "human",
+     "score": 0.0013
+    }
+   ],
+   "h10": [
+    {
+     "label": "ai",
+     "score": 0.9109
+    },
+    {
+     "label": "human",
+     "score": 0.0891
+    }
+   ]
+  }
+ }
+}
