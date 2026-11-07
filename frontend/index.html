@@ -37,17 +37,37 @@
   <!-- SUBMIT -->
   <section id="screen-submit" class="screen active">
     <h2>Submit art for examination</h2>
-    <p class="hint">Pick the image. Its SHA-256 is computed here in your browser. Only the hash goes on chain, never the image itself.</p>
-    <div class="row">
-      <label class="grow">Image file <input id="imageFile" type="file" accept="image/*"></label>
+    <div class="panel">
+      <h3>Step 1: Your artwork</h3>
+      <p class="hint">Pick the image. Its SHA-256 is computed here in your browser. Only the hash goes on chain, never the image itself.</p>
+      <div class="row">
+        <label class="grow">Image file <input id="imageFile" type="file" accept="image/*"></label>
+      </div>
+      <p class="msg">Image SHA-256: <code id="imageHashOut">pick a file</code></p>
     </div>
-    <p class="msg">Image SHA-256: <code id="imageHashOut">pick a file</code></p>
-    <div class="row">
-      <label class="grow">Evidence bundle hash (SHA-256 of the bundle manifest)
-        <input id="bundleHashInput" type="text" placeholder="64 hex characters">
-      </label>
+    <div class="panel">
+      <h3>Step 2: Your evidence bundle</h3>
+      <p class="hint">The bundle is a separate thing from the artwork: a set of proof files (sketches, layered sources, a timelapse video, a redraw). Select those files here and tag what each one proves. This page hashes them locally and builds the bundle manifest for you, so no hash is ever typed or pasted by hand. The files themselves are never uploaded anywhere; they stay with you and are shown only to the examiners.</p>
+      <div class="row">
+        <label class="grow">Evidence files <input id="bundleFiles" type="file" multiple></label>
+      </div>
+      <div id="bundleFileList"></div>
+      <div class="row">
+        <button id="btnBuildBundle" type="button">Build bundle manifest</button>
+        <button id="btnDownloadManifest" type="button" disabled>Download manifest.json</button>
+      </div>
+      <p class="msg">Bundle SHA-256: <code id="bundleHashOut">build the bundle first</code></p>
+      <p class="hint">Put the downloaded manifest.json inside your bundle folder and keep the folder exactly as it is. If any file changes afterwards, its hash stops matching and the case fails its integrity check.</p>
+      <details>
+        <summary>Advanced: I already have a bundle hash</summary>
+        <div class="row">
+          <label class="grow">Evidence bundle hash (SHA-256 of the bundle manifest)
+            <input id="bundleHashInput" type="text" placeholder="64 hex characters">
+          </label>
+        </div>
+        <p class="hint">Only for bundles prepared with the offline bundle tool. If this field is filled in, it overrides the builder above.</p>
+      </details>
     </div>
-    <p class="hint">Helper: the bundle manifest hash is computed by the bundle tool, not here. Build the bundle first, copy its manifest SHA-256, then paste it above. The bundle itself stays with you and the examiners, off chain.</p>
 
     <h3>Evidence menu: what the examiners check</h3>
     <p class="hint">You do not claim anything and there is nothing to tick. The examiners check the full menu below against your bundle, and an item counts only when at least 3 of 5 of them verify it. Passing needs Human 5 or more AND Process 5 or more, from verified items only.</p>
@@ -67,6 +87,7 @@
       <b>How a pass is decided:</b> <span id="passPreviewText">by the examiners, after they open the bundle.</span>
     </div>
 
+    <h3>Step 3: Fee and submit</h3>
     <div class="row">
       <label>Examination fee (NEAR) <input id="feeInput" type="number" min="0.05" step="0.01" value="0.05"></label>
       <label>Judging window
