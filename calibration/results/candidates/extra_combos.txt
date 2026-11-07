@@ -1,0 +1,15 @@
+{yaya,Ateeqq,umm,king}
+  majority: {'TP': 7, 'FP': 1, 'TN': 9, 'FN': 3, 'accuracy': 0.8} wrong=['a01', 'a04', 'a05', 'h10']
+  mean    : {'TP': 9, 'FP': 4, 'TN': 6, 'FN': 1, 'accuracy': 0.75} wrong=['a04', 'h06', 'h08', 'h09', 'h10']
+{yaya,smaug,umm,king}
+  majority: {'TP': 8, 'FP': 1, 'TN': 9, 'FN': 2, 'accuracy': 0.85} wrong=['a01', 'a05', 'h10']
+  mean    : {'TP': 10, 'FP': 4, 'TN': 6, 'FN': 0, 'accuracy': 0.8} wrong=['h05', 'h08', 'h09', 'h10']
+5-model license-clean {yaya,Ateeqq,smaug,umm,king}
+  majority: {'TP': 10, 'FP': 4, 'TN': 6, 'FN': 0, 'accuracy': 0.8} wrong=['h02', 'h08', 'h09', 'h10']
+  mean    : {'TP': 10, 'FP': 4, 'TN': 6, 'FN': 0, 'accuracy': 0.8} wrong=['h02', 'h08', 'h09', 'h10']
+5-model {yaya,hung,smaug,umm,king}
+  majority: {'TP': 10, 'FP': 1, 'TN': 9, 'FN': 0, 'accuracy': 0.95} wrong=['h10']
+  mean    : {'TP': 10, 'FP': 1, 'TN': 9, 'FN': 0, 'accuracy': 0.95} wrong=['h10']
+6-model all
+  majority: {'TP': 10, 'FP': 1, 'TN': 9, 'FN': 0, 'accuracy': 0.95} wrong=['h10']
+  mean    : {'TP': 10, 'FP': 3, 'TN': 7, 'FN': 0, 'accuracy': 0.85} wrong=['h08', 'h09', 'h10']
