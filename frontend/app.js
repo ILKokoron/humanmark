@@ -136,14 +136,104 @@ updatePreview();
 
 // ---------- image hash ----------
 let imageHash = null;
+let imageFileName = null;
+let imageFileModified = null;
+async function sha256Hex(buf) {
+  const digest = await crypto.subtle.digest('SHA-256', buf);
+  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
 document.getElementById('imageFile').addEventListener('change', async (ev) => {
   const f = ev.target.files[0];
   const out = document.getElementById('imageHashOut');
-  if (!f) { imageHash = null; out.textContent = 'pick a file'; return; }
-  const buf = await f.arrayBuffer();
-  const digest = await crypto.subtle.digest('SHA-256', buf);
-  imageHash = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
+  if (!f) { imageHash = null; imageFileName = null; out.textContent = 'pick a file'; return; }
+  imageFileName = f.name;
+  imageFileModified = f.lastModified;
+  imageHash = await sha256Hex(await f.arrayBuffer());
   out.textContent = imageHash;
+});
+
+// ---------- evidence bundle builder (Step 2) ----------
+// The bundle is built locally: files are hashed in the browser, the
+// manifest is generated here, and only its hash reaches the submit call.
+// Nothing is uploaded. The artist downloads manifest.json into the bundle
+// folder and shows the folder to the examiners off chain.
+let bundleBuiltHash = null;
+let bundleManifestText = null;
+const BUNDLE_TAG_OPTIONS = [
+  ['supporting', 'Supporting file (no item)'],
+  ['layered_source_file', 'Layered source file'],
+  ['progress_sketches', 'Progress sketch'],
+  ['live_redraw', 'Live redraw'],
+  ['continuous_timelapse', 'Continuous timelapse (video)'],
+];
+function guessTag(f) {
+  const ext = (f.name.split('.').pop() || '').toLowerCase();
+  if (['mp4', 'mov', 'webm', 'mkv', 'avi'].includes(ext)) return 'continuous_timelapse';
+  return 'supporting';
+}
+document.getElementById('bundleFiles').addEventListener('change', () => {
+  const list = document.getElementById('bundleFileList');
+  list.innerHTML = '';
+  bundleBuiltHash = null;
+  bundleManifestText = null;
+  document.getElementById('bundleHashOut').textContent = 'build the bundle first';
+  document.getElementById('btnDownloadManifest').disabled = true;
+  [...document.getElementById('bundleFiles').files].forEach((f, i) => {
+    const row = document.createElement('div');
+    row.className = 'row';
+    const opts = BUNDLE_TAG_OPTIONS.map(([v, label]) =>
+      `<option value="${v}"${v === guessTag(f) ? ' selected' : ''}>${label}</option>`).join('');
+    row.innerHTML = `<span class="grow">${esc(f.name)} <span class="hint">${f.size} bytes</span></span>` +
+      `<label>This file proves <select class="bundle-tag" data-idx="${i}">${opts}</select></label>`;
+    list.appendChild(row);
+  });
+});
+document.getElementById('btnBuildBundle').addEventListener('click', async () => {
+  const out = document.getElementById('bundleHashOut');
+  try {
+    if (!imageHash || !imageFileName) throw new Error('Do Step 1 first: pick the artwork image. It is the first entry of the bundle.');
+    const files = [...document.getElementById('bundleFiles').files];
+    if (!files.length) throw new Error('Pick at least one evidence file.');
+    const tags = {};
+    document.querySelectorAll('.bundle-tag').forEach((s) => { tags[Number(s.dataset.idx)] = s.value; });
+    const iso = (t) => new Date(t || Date.now()).toISOString().replace(/\.\d+Z$/, 'Z');
+    const entries = [{
+      path: imageFileName,
+      sha256: imageHash,
+      role: 'image',
+      created_at: iso(imageFileModified),
+    }];
+    for (let i = 0; i < files.length; i++) {
+      const f = files[i];
+      const entry = {
+        path: f.name,
+        sha256: await sha256Hex(await f.arrayBuffer()),
+        created_at: iso(f.lastModified),
+      };
+      const tag = tags[i] || 'supporting';
+      if (tag !== 'supporting') entry.item = tag;
+      entries.push(entry);
+    }
+    const manifest = {
+      artist: (window.hmWallet && window.hmWallet.getAccountId()) || '',
+      image_file: imageFileName,
+      files: entries,
+    };
+    bundleManifestText = JSON.stringify(manifest, null, 2);
+    bundleBuiltHash = await sha256Hex(new TextEncoder().encode(bundleManifestText));
+    out.textContent = bundleBuiltHash;
+    document.getElementById('btnDownloadManifest').disabled = false;
+  } catch (e) {
+    out.textContent = 'Bundle build failed: ' + e.message;
+  }
+});
+document.getElementById('btnDownloadManifest').addEventListener('click', () => {
+  if (!bundleManifestText) return;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([bundleManifestText], { type: 'application/json' }));
+  a.download = 'manifest.json';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
 });
 
 // ---------- min fee ----------
@@ -199,10 +289,11 @@ async function callContract(method, args, depositYocto) {
 document.getElementById('btnSubmitCase').addEventListener('click', async () => {
   const msg = document.getElementById('submitMsg');
   try {
-    const bundleHash = document.getElementById('bundleHashInput').value.trim().toLowerCase();
+    const pasted = document.getElementById('bundleHashInput').value.trim().toLowerCase();
+    const bundleHash = pasted || bundleBuiltHash || '';
     const claimed = selectedItems();
-    if (!imageHash) throw new Error('Pick an image file first, so its SHA-256 is computed.');
-    if (!/^[0-9a-f]{64}$/.test(bundleHash)) throw new Error('Bundle hash must be a 64 character hex SHA-256.');
+    if (!imageHash) throw new Error('Step 1 is missing: pick an image file first, so its SHA-256 is computed.');
+    if (!/^[0-9a-f]{64}$/.test(bundleHash)) throw new Error('Step 2 is missing: build the evidence bundle above so its hash is computed here, or paste an existing bundle hash under Advanced.');
     if (!claimed.length) throw new Error('Evidence menu is empty.');
     const feeNear = document.getElementById('feeInput').value;
     const fee = nearApi.utils.format.parseNearAmount(feeNear);
