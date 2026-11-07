@@ -96,7 +96,14 @@ grayscale 64x64 thumbnails: sim = 1 - mean_abs_diff / 255.
 1. Scanner A, exam1.bindingvow1106.testnet, model
    yaya36095/ai-source-detector from ~/workspace/human-cert/models/yaya.
 2. Scanner B, exam2.bindingvow1106.testnet, model
-   hungnh1201/ai-image-detector from ~/workspace/human-cert/models/hung.
+   umm-maybe/AI-image-detector from ~/workspace/human-cert/models/umm.
+   License CC BY 4.0 (commercial use with attribution). Scanner B was
+   originally hungnh1201/ai-image-detector; it was replaced on
+   2026-11-07 because hung is CC BY-NC 3.0 (non-commercial). The swap
+   changed only the model, not the method: same Swin family, same
+   label names (artificial, human), same rules and thresholds. The
+   original demo cases (case-0, case-1) were judged by the old panel;
+   case-2 and case-3 were judged by the current panel.
 3. Scanner C, exam3.bindingvow1106.testnet, model
    king1oo1/deepfake-model from ~/workspace/human-cert/models/king.
 
@@ -150,7 +157,7 @@ venv, with a vendored pure python Ed25519 verifier as fallback.
 
 ## Calibration numbers (quoted honestly)
 
-On a 20 image calibration set (10 human, 10 AI), the three scanner
+On a 20 image calibration set (10 human, 10 AI), the original scanner
 models scored 0.50 (yaya36095/ai-source-detector), 0.75
 (hungnh1201/ai-image-detector) and 0.70 (king1oo1/deepfake-model)
 individually at a 0.5 threshold, and 0.85 as an ensemble. The set is
@@ -159,6 +166,20 @@ poster was called AI by all three scanners at 0.86 to 0.94. That is
 exactly why pixel scores are advisory in this system and the process
 evidence carries the verdict. Full record:
 ~/workspace/human-cert/calibration/results/GATE-DECISION.md.
+
+Candidate replacement test (2026-11-07, same 20 images): three
+license-clean candidates were measured as Scanner B replacements.
+umm-maybe/AI-image-detector (CC BY 4.0) scored 0.75 alone with zero
+false positives on the human works, and the new ensemble
+{yaya, umm, king} scored 0.85, identical to the old panel, with
+ensemble false positives down from 2 to 1. Ateeqq scored 0.65 and
+abacusai/Smaug scored 0.75 alone but dropped its panel to 0.75 and
+flagged all three Squeek design files, so both were rejected. Honest
+note: no license-clean panel beats 0.85 on this set; every panel
+above 0.85 (0.90, 0.95) includes the NC-licensed hung. Full record:
+~/workspace/human-cert/calibration/results/candidates/RESULTS.md.
+Every error from both studies is catalogued in
+~/workspace/human-cert/calibration/results/FAILURE-CATALOG.md.
 
 ## Files
 
