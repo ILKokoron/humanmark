@@ -15,6 +15,7 @@ import { setupHotWallet } from 'https://cdn.jsdelivr.net/npm/@near-wallet-select
 
 const CONTRACT = 'humanmark.bindingvow1106.testnet';
 let selector = null;
+let selectorPromise = null;
 let modal = null;
 let accountId = null;
 
@@ -33,6 +34,12 @@ function paint() {
 
 async function ensureSelector() {
   if (selector) return selector;
+  if (selectorPromise) return selectorPromise;
+  selectorPromise = initSelector();
+  return selectorPromise;
+}
+
+async function initSelector() {
   selector = await setupWalletSelector({
     network: 'testnet',
     contractId: CONTRACT,
@@ -59,7 +66,14 @@ async function ensureSelector() {
 
 window.hmWallet = {
   async open() {
-    await ensureSelector();
+    const state = document.getElementById('walletState');
+    const btn = document.getElementById('btnWallet');
+    if (!selector) {
+      if (state) state.textContent = 'Opening wallet selector...';
+      if (btn) btn.disabled = true;
+      try { await ensureSelector(); }
+      finally { if (btn) btn.disabled = false; paint(); }
+    }
     if (accountId) {
       const wallet = await selector.wallet();
       await wallet.signOut();
