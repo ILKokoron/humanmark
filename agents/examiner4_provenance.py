@@ -164,7 +164,7 @@ def analyze(bundle_dir, manifest, case, integrity_ok, integrity_checks, attestat
     if not integrity_ok:
         return {"checks": checks, "verified_items": [], "threshold": None, "notes": notes}
 
-    claimed = case.get("claimed_items") or manifest.get("claimed_items", [])
+    claimed = list(common.FULL_MENU)
     challenge_code = manifest.get("challenge_code", "")
 
     def artifact_hits(item):
