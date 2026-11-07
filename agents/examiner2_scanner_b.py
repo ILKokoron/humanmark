@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 # Examiner 2, Scanner B, account exam2.bindingvow1106.testnet.
 # Method: pixel classification with the pinned local model
-# hungnh1201/ai-image-detector, loaded only from
-# ~/workspace/human-cert/models/hung with HF_HUB_OFFLINE=1. It reports
+# umm-maybe/AI-image-detector, loaded only from
+# ~/workspace/human-cert/models/umm with HF_HUB_OFFLINE=1. It reports
 # per class scores and P(AI) for the final image.
+# License: CC BY 4.0, commercial use allowed with attribution to the
+# model authors (umm-maybe). This examiner replaced
+# hungnh1201/ai-image-detector on 2026-11-07 because that model is
+# CC BY-NC 3.0 (non-commercial) and cannot sit in a panel that may be
+# used commercially. The swap changes only the model, not the method:
+# same Swin family, same label names (artificial, human), same
+# verification rules and thresholds as the previous Scanner B.
 # Published verification rule: pixels judge consistency of artifacts,
 # process evidence judges origin, so P(AI) is advisory and never gates
 # item verification. This examiner verifies an item only when the
@@ -16,9 +23,13 @@
 # least 0.80 to the final; live_redraw when the redraw file has sim at
 # least 0.85 to the final image cropped to its region;
 # continuous_timelapse when a video file entry exists (metadata only).
-# Calibration note: on a 20 image set this model scored 0.75 alone and
-# the three scanner ensemble scored 0.85. Pixel scores are advisory,
-# never the verdict, and a dissenting pixel score is recorded, not hidden.
+# Calibration note: on the 20 image calibration set this model scored
+# 0.75 alone, with zero false positives on the human works (its errors
+# are missed AI images, never false accusations), and the ensemble
+# {yaya, umm, king} scored 0.85, identical to the previous panel.
+# Pixel scores are advisory, never the verdict, and a dissenting
+# pixel score is recorded, not hidden. Full record:
+# calibration/results/candidates/RESULTS.md.
 import os
 import sys
 
@@ -28,8 +39,8 @@ os.environ.setdefault("HF_HUB_OFFLINE", "1")
 from examiner_base import CALIBRATION_NOTE, run_examiner, scanner_analyze
 
 EXAMINER = "exam2.bindingvow1106.testnet"
-MODEL_ID = "hungnh1201/ai-image-detector"
-LOCAL_DIR = os.path.expanduser("~/workspace/human-cert/models/hung")
+MODEL_ID = "umm-maybe/AI-image-detector"
+LOCAL_DIR = os.path.expanduser("~/workspace/human-cert/models/umm")
 
 
 def analyze(bundle_dir, manifest, case, integrity_ok, integrity_checks, attestation_cache):
