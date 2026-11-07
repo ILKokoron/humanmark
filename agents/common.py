@@ -144,6 +144,20 @@ def ed25519_verify(public_key: bytes, message: bytes, signature: bytes) -> bool:
 
 VIDEO_EXTS = {".mp4", ".mov", ".webm", ".mkv", ".avi"}
 
+# The full evidence menu. Since the flow flip (2026-11-07, kokoron's call),
+# artists claim nothing: examiners sweep this whole menu against every
+# bundle, and only items they verify can score. The case's claimed_items
+# on chain now records this scope, not an artist's say-so.
+FULL_MENU = [
+    "passkey_attestation",
+    "aged_social_account",
+    "live_challenge",
+    "continuous_timelapse",
+    "layered_source_file",
+    "live_redraw",
+    "progress_sketches",
+]
+
 
 def load_bundle(bundle_dir):
     """Load manifest.json from a bundle folder. Returns (manifest, manifest_bytes)."""
