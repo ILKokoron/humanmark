@@ -76,6 +76,11 @@ case-0 and case-1 were judged by the original panel (with hung as Scanner B). ca
 - Submit tx: `7gcKinuqgUwfhkbjigQk9xYYnUN2RisVNEp4cTh8y9D`
 - Finalize tx: `4GCm3RrSXtemxM4p17xj4pABhbZahC4PMsxVsA8Eg9rR`
 
+**Flow change (2026-11-07, case-6): the artist claims nothing.** In the first flow the artist ticked the evidence items they said were in their bundle, and the examiners only checked the ticked items. That put the claim and the thing being judged in the same hands, which reads as an honor system, and it also meant real evidence the artist forgot to tick could never score. Now the artist submits only two hashes (image, bundle). The examiners sweep the full evidence menu against the bundle themselves, and only items at least 3 of 5 examiners verify can score. The `claimed_items` field on chain now records that full-menu examination scope, not an artist's say-so. The frontend has no checkboxes, and each examiner report lists what it found on its own sweep.
+
+**case-6, PASS (examiner-determined checklist).** The same headline poster v2 bundle as case-2, submitted with zero artist claims under the new flow. The three scanners and the Provenance examiner each verified `passkey_attestation`, `layered_source_file` and `live_redraw`; the Process auditor verified none, for the same published date-ordering reasons as case-0 and case-2. The sweep also surfaced a find no claim would have produced: the Provenance examiner independently verified a `live_challenge` in the bundle (the challenge code in the redraw filename). Only 1 of 5 examiners verified it, below the 3 of 5 threshold, so it scored nothing, but it demonstrates the point of the change: the checklist is discovered by the examiners, not declared by the artist. Verdict onchain: Human 5, Process 5, **certified at level 5 based on this evidence**, certificate `cert-6` minted to the artist, fee settled.
+- Finalize tx: `Bv8HV9PF2wkQu2uvmLPjMkvWdRM73G6CAqm442vYxAFo`
+
 ## Anti-gadungan rules
 
 - Pay never equals pass. Failure is a real, demonstrated, onchain outcome (case-1).
